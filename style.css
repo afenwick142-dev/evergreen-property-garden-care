@@ -1,8 +1,9 @@
 /* style.css — FULL FILE REPLACEMENT
-   Fixes:
-   - Remove the “hard line” by making the header blend/flow into the page
-   - Logo bigger (slightly taller than header)
-   - Logo positioned top-left ~1cm from edges
+   Fixes (per your message):
+   - Logo in TOP-LEFT corner ~1cm from the viewport edge
+   - Logo BIGGER so it's slightly taller than the header
+   - Header gradient flows (no hard line)
+   - NO pill / NO background behind logo
 */
 
 :root{
@@ -33,84 +34,96 @@ body{
   margin:0 auto;
 }
 
-/* HEADER — FLOWING (NO HARD LINE) */
+/* =========================
+   HEADER (FLOWING GRADIENT)
+   ========================= */
+
 header{
   position: sticky;
   top:0;
   z-index:50;
 
-  /* Main flow gradient */
+  /* Flow from white (left) -> deep green (right) */
   background:
     linear-gradient(
       90deg,
       #ffffff 0%,
       #f4f7f5 18%,
-      rgba(31,95,59,0.15) 35%,
-      rgba(31,95,59,0.55) 55%,
-      var(--green-dark) 75%,
+      rgba(31,95,59,0.18) 36%,
+      rgba(31,95,59,0.55) 56%,
+      var(--green-dark) 78%,
       var(--green) 100%
     );
 
-  /* Shadow is softer so it doesn't look like a "hard line" */
-  box-shadow: 0 10px 18px rgba(0,0,0,0.10);
-
-  /* Add a gentle fade into the page background at the bottom */
-  border-bottom: none;
+  /* Softer shadow so it doesn't look like a "hard line" */
+  box-shadow: 0 14px 34px -28px rgba(0,0,0,0.55);
 }
 
-/* This creates the “flow” at the bottom instead of a line */
+/* This makes the bottom edge blend instead of "cutting" */
 header::after{
   content:"";
   position:absolute;
   left:0;
   right:0;
-  bottom:-18px;
-  height:18px;
+  bottom:-26px;
+  height:26px;
   pointer-events:none;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.10), rgba(0,0,0,0));
-  opacity: 0.22;
+
+  /* feather into the page background */
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.10),
+    rgba(0,0,0,0.00)
+  );
+  opacity:0.16; /* very subtle - avoids a hard line */
 }
 
-/* HEADER INNER — give space so logo can exceed header height */
+/* Header content area */
 .header-inner{
   position: relative;
-  min-height: 82px;               /* header height */
+  min-height: 88px;          /* header height */
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:flex-end;
   gap:18px;
 
-  /* “~1cm” from edges ≈ 38px */
-  padding: 14px 38px;
+  /* keep nav aligned nicely */
+  width:min(1100px, 92%);
+  margin:0 auto;
+
+  /* room so nav doesn't collide with the oversized logo */
+  padding: 14px 0 14px 0;
 }
 
-/* BRAND — TOP LEFT CORNER */
+/* BRAND — anchored to VIEWPORT corner (not container) */
 .brand{
   position: absolute;
-  top: 12px;
-  left: 38px;                     /* ~1cm */
+  left: 38px;               /* ~1cm from left edge */
+  top: 10px;                /* ~1cm-ish from top */
   display:flex;
   align-items:flex-start;
+  z-index: 60;              /* above header gradient */
 }
 
-/* LOGO — SLIGHTLY TALLER THAN HEADER */
+/* LOGO — slightly taller than header */
 .logo{
-  height: 96px;                   /* slightly bigger than header (82px) */
+  height: 104px;            /* slightly bigger than header (88px) */
   width: auto;
   display:block;
 
-  /* separation without changing logo */
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.22));
+  /* help it read on gradients without changing the logo file */
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.24));
 }
 
 /* NAV */
 nav{
-  margin-left:auto;
   display:flex;
   gap:12px;
   flex-wrap:wrap;
   justify-content:flex-end;
-  padding-left: 160px;            /* prevents nav overlapping large logo */
+
+  /* safety spacing so it never overlaps the large logo */
+  padding-left: 240px;
 }
 
 nav a{
@@ -130,7 +143,10 @@ nav a:hover{
   opacity:1;
 }
 
-/* HERO */
+/* =========================
+   HERO / PAGE
+   ========================= */
+
 .hero{
   background:
     radial-gradient(900px 340px at 20% 0%, rgba(31,95,59,0.18), transparent 60%),
@@ -208,7 +224,6 @@ nav a:hover{
   box-shadow: var(--shadow2);
 }
 
-/* QUICK LIST */
 .quick-list{
   margin:0;
   padding:0;
@@ -249,9 +264,7 @@ nav a:hover{
 }
 
 /* SECTION */
-.section{
-  padding: 44px 0;
-}
+.section{ padding: 44px 0; }
 
 .section h2{
   margin:0 0 10px 0;
@@ -280,14 +293,8 @@ nav a:hover{
   padding: 18px;
 }
 
-.trust b{
-  display:block;
-  margin-bottom: 4px;
-}
-
-.trust small{
-  color: var(--muted);
-}
+.trust b{ display:block; margin-bottom:4px; }
+.trust small{ color: var(--muted); }
 
 /* SERVICES */
 .services-grid{
@@ -311,9 +318,7 @@ nav a:hover{
 }
 
 /* CTA */
-.cta{
-  padding: 44px 0 56px;
-}
+.cta{ padding: 44px 0 56px; }
 
 .cta-inner{
   background: linear-gradient(90deg, var(--green-dark), var(--green));
@@ -335,16 +340,21 @@ footer{
   padding: 18px 0;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+   ========================= */
+
 @media (max-width: 980px){
   .hero-grid{ grid-template-columns: 1fr; }
   .hero h1{ font-size: 36px; }
 }
 
 @media (max-width: 760px){
+  header::after{ bottom:-18px; height:18px; opacity:0.14; }
+
   .header-inner{
-    padding: 14px 18px;
-    min-height: 78px;
+    min-height: 86px;
+    padding: 12px 0;
   }
 
   .brand{
@@ -353,13 +363,18 @@ footer{
   }
 
   .logo{
-    height: 72px;   /* still readable but not ridiculous on mobile */
+    height: 78px; /* still big/readable on mobile */
   }
 
   nav{
     justify-content:center;
     padding-left: 0;
-    margin-top: 58px; /* pushes nav below the bigger logo */
+    margin-top: 58px; /* nav drops below logo */
+  }
+
+  .trust-grid,
+  .services-grid{
+    grid-template-columns: 1fr;
   }
 
   .hero{
@@ -372,10 +387,5 @@ footer{
 
   .hero p{
     font-size: 16px;
-  }
-
-  .trust-grid,
-  .services-grid{
-    grid-template-columns: 1fr;
   }
 }
