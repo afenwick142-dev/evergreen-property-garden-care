@@ -1,12 +1,3 @@
-/* style.css — FULL FILE REPLACEMENT
-   What this does (exactly as requested):
-   ✅ Logo: TOP-LEFT corner ~1cm from edge
-   ✅ Logo: BIG + readable (taller than the header)
-   ✅ Header: NO hard lines (no shadow line, no border line) — it FLOWS into the page
-   ✅ No pill / no box behind the logo
-   ✅ Mobile-friendly (logo still readable, nav wraps neatly)
-*/
-
 :root{
   --green:#1f5f3b;
   --green-dark:#184a2e;
@@ -14,7 +5,7 @@
   --card:#ffffff;
   --text:#1f2b25;
   --muted:#5a6a62;
-  --line:rgba(0,0,0,0.08);
+  --line:rgba(0,0,0,0.10);
   --shadow: 0 10px 24px rgba(0,0,0,0.10);
   --shadow2: 0 6px 16px rgba(0,0,0,0.10);
   --r:16px;
@@ -30,372 +21,139 @@ body{
   line-height:1.6;
 }
 
-.container{
-  width:min(1100px, 92%);
-  margin:0 auto;
-}
+.container{ width:min(1100px, 92%); margin:0 auto; }
 
-/* =========================
-   HEADER (FLOWING, NO LINES)
-   ========================= */
-
+/* Header */
 header{
   position: sticky;
   top:0;
   z-index:50;
-
-  /* IMPORTANT: allow the big logo to exceed header height */
-  overflow: visible;
-
-  /* Make header the positioning anchor for the logo */
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
+  background: linear-gradient(90deg, var(--green-dark), var(--green));
+  box-shadow: 0 10px 20px rgba(0,0,0,0.14);
 }
 
-/* We apply the flowing background to the header itself */
-header{
-  /* Flowing horizontal gradient (left white -> right green)
-     PLUS a vertical fade at the bottom so it blends into the page background (no “hard line”) */
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(246,248,247,0) 0%,
-      rgba(246,248,247,0.75) 100%
-    ),
-    linear-gradient(
-      90deg,
-      #ffffff 0%,
-      #f4f7f5 18%,
-      rgba(31,95,59,0.18) 36%,
-      rgba(31,95,59,0.55) 56%,
-      var(--green-dark) 78%,
-      var(--green) 100%
-    );
-
-  /* NO shadow line, NO border line */
-  box-shadow: none;
-  border-bottom: none;
-}
-
-/* Header layout (supports your original HTML: header > .container > .brand + nav) */
-header .container{
-  position: relative;
+.header-inner{
   display:flex;
   align-items:center;
-  justify-content:flex-end;
-  min-height: 88px;          /* header height */
-  padding: 14px 0;
+  justify-content:space-between;
+  gap:16px;
+  padding:12px 0;
 }
 
-/* =========================
-   LOGO (TOP-LEFT CORNER)
-   ========================= */
+.brand{ display:flex; align-items:center; gap:10px; }
+.logo{ height:54px; width:auto; display:block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.20)); }
 
-/* Logo placement: ~1cm from viewport edge (approx 38px) */
-.brand{
-  position: absolute;
-  top: 12px;
-  left: 38px;
-  display:flex;
-  align-items:flex-start;
-  z-index: 60;
-}
-
-/* Logo size: taller than header so it's readable */
-.logo{
-  height: 120px;            /* BIG + readable; header is 88px */
-  width: auto;
-  display:block;
-
-  /* Make it pop against gradient WITHOUT changing logo artwork */
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.25));
-}
-
-/* Kill any title text if present (you said you don’t need it) */
-.site-title,
-header h1{
-  display:none !important;
-}
-
-/* =========================
-   NAV
-   ========================= */
-
-nav{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-
-  /* Reserve space so nav never overlaps the large logo */
-  padding-left: 260px;
-}
-
+nav{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
 nav a{
-  color:#ffffff;
+  color:#fff;
   text-decoration:none;
   font-weight:700;
   font-size:15px;
   padding:10px 12px;
   border-radius:12px;
   opacity:0.95;
-  transition: background 0.12s ease, transform 0.12s ease, opacity 0.12s ease;
+  transition: background 0.12s ease, transform 0.12s ease;
 }
+nav a:hover{ background: rgba(255,255,255,0.16); transform: translateY(-1px); }
+nav a.active{ background: rgba(255,255,255,0.16); }
 
-nav a:hover{
-  background: rgba(255,255,255,0.16);
-  transform: translateY(-1px);
-  opacity:1;
-}
+/* Page */
+.page{ padding: 22px 0 60px; }
+.page-title{ margin: 18px 0 6px; font-size: 30px; letter-spacing:-0.3px; }
+.page-sub{ margin: 0 0 18px; color: var(--muted); max-width: 70ch; }
 
-/* =========================
-   HERO / PAGE
-   ========================= */
-
-.hero{
-  background:
-    radial-gradient(900px 340px at 20% 0%, rgba(31,95,59,0.18), transparent 60%),
-    radial-gradient(900px 340px at 80% 0%, rgba(31,95,59,0.14), transparent 60%),
-    linear-gradient(#f9fbfa, #f1f6f3);
-
-  /* NO border line under header area */
-  border-bottom: none;
-
-  padding: 56px 0 42px;
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap:22px;
-  align-items:stretch;
-}
-
-.hero-card{
-  background:var(--card);
-  border:1px solid var(--line);
+/* Cards */
+.card{
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: var(--r);
-  box-shadow: var(--shadow);
-  padding: 22px;
+  box-shadow: var(--shadow2);
+  padding: 18px;
+  margin-top: 14px;
+}
+.card-title{ margin: 0 0 12px; font-size: 18px; }
+
+/* Forms */
+.grid-2{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+}
+.field span{ display:block; font-weight:700; font-size: 13px; margin-bottom:6px; color: #2a3a33; }
+.field input, .field select{
+  width:100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.12);
+  font-size: 16px;
+  background:#fff;
+}
+.field input:focus, .field select:focus{
+  outline: none;
+  border-color: rgba(31,95,59,0.55);
+  box-shadow: 0 0 0 3px rgba(31,95,59,0.15);
 }
 
-.hero h1{
-  margin:0 0 10px 0;
-  font-size: 44px;
-  line-height:1.08;
-  letter-spacing:-0.7px;
-}
-
-.hero p{
-  margin:0 0 18px 0;
-  color:var(--muted);
-  font-size: 18px;
-  max-width: 60ch;
-}
-
-.hero-actions{
+.estimate-box{
   display:flex;
   gap:12px;
-  flex-wrap:wrap;
-  margin-top: 6px;
+  justify-content:space-between;
+  align-items:center;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #f5faf7;
+  border: 1px solid rgba(31,95,59,0.18);
 }
+
+.estimate-label{ font-weight:800; font-size: 12px; color: var(--muted); }
+.estimate-price{ font-size: 22px; font-weight: 900; letter-spacing:-0.3px; }
+.estimate-note{ font-size: 13px; color: var(--muted); margin-top: 4px; }
 
 .btn{
   display:inline-block;
-  text-decoration:none;
-  font-weight:800;
-  font-size:15px;
   padding: 12px 16px;
   border-radius: 14px;
+  text-decoration:none;
+  font-weight:900;
+  font-size: 15px;
+  cursor:pointer;
+  border: 1px solid transparent;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
-
 .btn-primary{
   background: linear-gradient(90deg, var(--green-dark), var(--green));
   color:#fff;
   box-shadow: var(--shadow2);
 }
-
-.btn-primary:hover{
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
 
 .btn-outline{
-  background:#ffffff;
-  color:var(--green-dark);
-  border:1px solid rgba(31,95,59,0.35);
+  background:#fff;
+  color: var(--green-dark);
+  border: 1px solid rgba(31,95,59,0.35);
 }
+.btn-outline:hover{ transform: translateY(-2px); box-shadow: var(--shadow2); }
 
-.btn-outline:hover{
-  transform: translateY(-2px);
-  box-shadow: var(--shadow2);
-}
+.full{ width:100%; text-align:center; }
 
-/* QUICK LIST */
-.quick-list{
-  margin:0;
-  padding:0;
-  list-style:none;
-  display:grid;
-  gap:12px;
-}
-
-.quick-item{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  padding: 12px;
+.status{ margin-top: 10px; font-weight: 700; color: var(--muted); }
+.status.error{ color: #b00020; }
+.success{
+  margin-top: 12px;
+  padding: 14px;
   border-radius: 14px;
-  background: #f6f9f7;
-  border: 1px solid rgba(0,0,0,0.06);
+  background: #f5faf7;
+  border: 1px solid rgba(31,95,59,0.18);
 }
 
-.icon{
-  width:40px;
-  height:40px;
-  border-radius: 12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: rgba(31,95,59,0.12);
-  font-size: 18px;
-}
+.fineprint{ margin-top: 10px; font-size: 13px; color: var(--muted); }
 
-.quick-item strong{
-  display:block;
-  margin-bottom:2px;
-}
-
-.quick-item span{
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* SECTION */
-.section{ padding: 44px 0; }
-
-.section h2{
-  margin:0 0 10px 0;
-  font-size: 28px;
-  letter-spacing:-0.3px;
-}
-
-.section p.lead{
-  margin:0 0 18px 0;
-  color: var(--muted);
-  max-width: 75ch;
-}
-
-/* TRUST */
-.trust-grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap:16px;
-}
-
-.trust{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius: var(--r);
-  box-shadow: var(--shadow2);
-  padding: 18px;
-}
-
-.trust b{ display:block; margin-bottom:4px; }
-.trust small{ color: var(--muted); }
-
-/* SERVICES */
-.services-grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap:16px;
-}
-
-.service{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius: var(--r);
-  box-shadow: var(--shadow2);
-  padding: 18px;
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.service:hover{
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
-}
-
-/* CTA */
-.cta{ padding: 44px 0 56px; }
-
-.cta-inner{
-  background: linear-gradient(90deg, var(--green-dark), var(--green));
-  color:#fff;
-  border-radius: var(--r);
-  box-shadow: var(--shadow);
-  padding: 22px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap: wrap;
-}
-
-/* FOOTER */
-footer{
-  background:#101413;
-  color:#cfd6d2;
-  padding: 18px 0;
-}
-
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 980px){
-  .hero-grid{ grid-template-columns: 1fr; }
-  .hero h1{ font-size: 36px; }
-}
-
-/* Keep logo readable on mobile but not ridiculous */
+/* Mobile */
 @media (max-width: 760px){
-  header .container{
-    min-height: 86px;
-    padding: 12px 0;
-  }
-
-  .brand{
-    left: 18px;
-    top: 10px;
-  }
-
-  .logo{
-    height: 92px; /* still readable on mobile */
-  }
-
-  nav{
-    justify-content:center;
-    padding-left: 0;
-    margin-top: 64px; /* nav drops under the logo */
-  }
-
-  .trust-grid,
-  .services-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .hero{
-    padding: 46px 0 34px;
-  }
-
-  .hero h1{
-    font-size: 30px;
-  }
-
-  .hero p{
-    font-size: 16px;
-  }
+  .header-inner{ justify-content:center; }
+  nav{ justify-content:center; }
+  .grid-2{ grid-template-columns: 1fr; }
+  .logo{ height:50px; }
+  .estimate-box{ flex-direction: column; align-items:flex-start; }
 }
