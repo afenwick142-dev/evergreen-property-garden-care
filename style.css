@@ -1,4 +1,4 @@
-/* style.css — FULL FILE REPLACEMENT (Bigger logo, no pill, tapered flowing gradient) */
+/* style.css — FULL FILE REPLACEMENT (NO PILL, BIG READABLE LOGO, HEADER BACKGROUND FLOW GRADIENT) */
 
 :root{
   --green:#1f5f3b;
@@ -28,16 +28,49 @@ body{
   margin:0 auto;
 }
 
-/* HEADER */
+/* HEADER (BACKGROUND FLOW GRADIENT - THIS IS THE CHANGE, NOT THE LOGO) */
 header{
-  background: linear-gradient(90deg, var(--green2), var(--green));
   position: sticky;
   top:0;
   z-index:50;
+  /* base header colour */
+  background: linear-gradient(90deg, var(--green2), var(--green));
   box-shadow: 0 10px 20px rgba(0,0,0,0.14);
+  overflow: hidden;
+}
+
+/* Flowing / tapered background overlay: LEFT WHITE -> RIGHT GREEN */
+header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+
+  /* white fades into transparent so the green base shows through */
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.96) 0%,
+    rgba(255,255,255,0.78) 18%,
+    rgba(255,255,255,0.38) 38%,
+    rgba(255,255,255,0.12) 54%,
+    rgba(255,255,255,0.00) 68%
+  );
+
+  /* tapered "flow" shape */
+  clip-path: polygon(
+    0% 0%,
+    62% 0%,
+    72% 50%,
+    62% 100%,
+    0% 100%
+  );
+
+  /* soften the edge */
+  filter: blur(0.6px);
+  opacity: 1;
 }
 
 .header-inner{
+  position: relative; /* above header::before */
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -45,61 +78,33 @@ header{
   padding:12px 0;
 }
 
-/* BRAND AREA (FLOW GRADIENT BACKPLATE) */
+/* BRAND (NO PILL / NO BACKPLATE) */
 .brand{
   position: relative;
   display:flex;
   align-items:center;
-  padding: 10px 14px;
-  border-radius: 18px;
+  padding: 0;               /* no padding */
+  background: transparent;  /* no background */
+  border-radius: 0;
 }
 
-/* Tapered / flowing gradient: left white to right green, feathered edges */
-.brand::before{
-  content:"";
-  position:absolute;
-  inset: 0;
-  border-radius: 18px;
-
-  /* The "flow": strong white on the left, fading into transparent so the header shows through */
-  background:
-    linear-gradient(90deg,
-      rgba(255,255,255,0.92) 0%,
-      rgba(255,255,255,0.70) 28%,
-      rgba(255,255,255,0.22) 60%,
-      rgba(255,255,255,0.00) 78%
-    );
-
-  /* Taper the shape so it feels like it flows right */
-  clip-path: polygon(
-    0% 0%,
-    88% 0%,
-    100% 50%,
-    88% 100%,
-    0% 100%,
-    0% 0%
-  );
-
-  /* soften the "edge" so it blends naturally */
-  filter: blur(0.2px);
-  opacity: 1;
-}
-
-/* LOGO (BIGGER + READABLE) */
+/* LOGO (BIGGER + READABLE, NO PILL ON THE LOGO) */
 .logo{
-  position: relative; /* sits above the ::before gradient */
-  height: 72px;       /* SIGNIFICANTLY bigger */
+  position: relative;
+  height: 78px;   /* significantly bigger so text is readable */
   width: auto;
   display:block;
 
-  /* Make it pop without a white pill */
-  filter:
-    drop-shadow(0 4px 10px rgba(0,0,0,0.22))
-    drop-shadow(0 1px 0 rgba(255,255,255,0.25));
+  /* pop without changing logo artwork */
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.22));
+  background: transparent;  /* IMPORTANT: no white pill */
+  padding: 0;               /* IMPORTANT: no padding */
+  border-radius: 0;         /* IMPORTANT: no rounding */
 }
 
 /* NAV */
 nav{
+  position: relative;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
@@ -380,11 +385,7 @@ footer{
   }
 
   .logo{
-    height: 58px; /* still readable on mobile */
-  }
-
-  .brand{
-    padding: 8px 12px;
+    height: 62px; /* still readable on mobile */
   }
 
   .hero{
