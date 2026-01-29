@@ -1,158 +1,151 @@
-// ==============================
-// Evergreen Booking (JSONP)
-// ==============================
+// ================================
+// Evergreen Booking – FULL SCRIPT
+// ================================
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzpJ7Hl7pm1MlD4LJVwSfpmfNJ9vkjip0xI4puy8s_3eerVkeK1nI5JBj-p4rbv2eI/exec";
+// 🔗 Google Apps Script Web App URL
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbzpJ7Hl7pm1MlD4LJVwSfpmfNJ9vkjip0xI4puy8s_3eerVkeK1nI5JBj-p4rbv2eI/exec";
 
-const els = {
-  date: document.getElementById("date"),
-  time: document.getElementById("time"),
-  name: document.getElementById("name"),
-  mobile: document.getElementById("mobile"),
-  postcode: document.getElementById("postcode"),
-  notes: document.getElementById("notes"),
-  jobType: document.getElementById("jobType"),
-  estimate: document.getElementById("estimate"),
-  bookBtn: document.getElementById("bookBtn"),
-  status: document.getElementById("status"),
-  success: document.getElementById("success"),
-  waLink: document.getElementById("waLink"),
-  bookingIdText: document.getElementById("bookingIdText"),
-  ownerBox: document.getElementById("ownerBox"),
-  ownerLink: document.getElementById("ownerLink"),
-};
+// 📱 YOUR WhatsApp Business number (UK → international format)
+const BUSINESS_WA_NUMBER = "447825250141";
 
-// --- JSONP helper (bypasses CORS) ---
-function jsonp(url, params = {}) {
-  return new Promise((resolve, reject) => {
-    const cb = "cb_" + Math.random().toString(36).slice(2);
-    const script = document.createElement("script");
+// ================================
+// Helpers
+// ================================
 
-    const query = new URLSearchParams({ ...params, callback: cb }).toString();
-    script.src = `${url}?${query}`;
+function $(id) {
+  return document.getElementById(id);
+}
 
-    const timeout = setTimeout(() => {
-      cleanup();
-      reject(new Error("Request timed out"));
-    }, 15000);
+function toInternationalUK(mobile) {
+  if (!mobile) return "";
+  const digits = String(mobile).replace(/\D/g, "");
+  if (digits.startsWith("44")) return digits;
+  if (digits.startsWith("0")) return "44" + digits.slice(1);
+  return digits;
+}
 
-    function cleanup() {
-      clearTimeout(timeout);
-      if (script.parentNode) script.parentNode.removeChild(script);
-      delete window[cb];
-    }
+function buildWhatsAppLink(phoneDigits, message) {
+  const clean = String(phoneDigits).replace(/\D/g, "");
+  const text = encodeURIComponent(message);
+  return `https://wa.me/${clean}?text=${text}`;
+}
 
-    window[cb] = (data) => {
-      cleanup();
-      resolve(data);
-    };
+function showStatus(msg, isError = false) {
+  const el = $("status");
+  if (!el) return;
+  el.textContent = msg;
+  el.style.color = isError ? "#b00020" : "#0a7a2f";
+}
 
-    script.onerror = () => {
-      cleanup();
-      reject(new Error("Network error"));
-    };
+// ================================
+// Available times (simple MVP)
+// ================================
 
-    document.body.appendChild(script);
+const TIMES = [
+  "09:00",
+  "11:00",
+  "13:00",
+  "15:00"
+];
+
+function populateTimes() {
+  const select = $("time");
+  if (!select) return;
+
+  select.innerHTML = `<option value="">Select a time</option>`;
+  TIMES.forEach(t => {
+    const opt = document.createElement("option");
+    opt.value = t;
+    opt.textContent = t;
+    select.appendChild(opt);
   });
 }
 
-function setStatus(msg, ok = false) {
-  els.status.textContent = msg;
-  els.status.style.color = ok ? "#0a7a2f" : "#b00020";
-}
+// ================================
+// Booking submit
+// ================================
 
-function clearTimes() {
-  els.time.innerHTML = `<option value="">Pick a date first</option>`;
-}
-
-async function loadTimesForDate(dateStr) {
-  clearTimes();
-  if (!dateStr) return;
-
-  setStatus("Loading available times…", true);
-
-  try {
-    const data = await jsonp(WEB_APP_URL, { action: "available", date: dateStr });
-
-    if (!data || !data.ok) {
-      setStatus(data && data.error ? data.error : "Could not load times.");
-      return;
-    }
-
-    if (!data.available || data.available.length === 0) {
-      els.time.innerHTML = `<option value="">No slots left for this day</option>`;
-      setStatus("No slots left for that date. Try another.", false);
-      return;
-    }
-
-    els.time.innerHTML = `<option value="">Select a time</option>` + data.available
-      .map(t => `<option value="${t}">${t}</option>`)
-      .join("");
-
-    setStatus("Pick a time and book.", true);
-  } catch (err) {
-    setStatus("Couldn’t load times. Check your Apps Script deployment is set to Anyone.");
-  }
-}
-
-els.date.addEventListener("change", () => {
-  els.success.hidden = true;
-  loadTimesForDate(els.date.value);
-});
-
-els.bookBtn.addEventListener("click", async () => {
-  els.success.hidden = true;
+async function submitBooking() {
+  showStatus("");
 
   const payload = {
-    action: "book",
-    date: els.date.value,
-    time: els.time.value,
-    name: els.name.value.trim(),
-    mobile: els.mobile.value.trim(),
-    postcode: els.postcode.value.trim(),
-    notes: els.notes.value.trim(),
-    jobType: els.jobType.value,
-    estimate: els.estimate.value,
-    source: "Website",
+    date: $("date")?.value || "",
+    time: $("time")?.value || "",
+    name: $("name")?.value || "",
+    mobile: $("mobile")?.value || "",
+    postcode: $("postcode")?.value || "",
+    notes: $("notes")?.value || "",
+    source: "Website"
   };
 
   // Basic validation
   if (!payload.date || !payload.time || !payload.name || !payload.mobile || !payload.postcode) {
-    setStatus("Please fill: date, time, name, mobile, postcode.");
+    showStatus("Please complete all required fields.", true);
     return;
   }
 
-  setStatus("Saving booking…", true);
-
   try {
-    const data = await jsonp(WEB_APP_URL, payload);
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
 
-    if (!data || !data.ok) {
-      setStatus(data && data.error ? data.error : "Booking failed.");
-      return;
+    const data = await res.json();
+
+    if (!data || !data.success) {
+      throw new Error("Booking failed");
     }
 
-    // Show success
-    els.bookingIdText.textContent = data.bookingId || "";
-    els.waLink.href = data.whatsappCustomer || "#";
-    els.success.hidden = false;
+    // ================================
+    // SUCCESS UI
+    // ================================
 
-    if (data.whatsappOwner) {
-      els.ownerBox.style.display = "block";
-      els.ownerLink.href = data.whatsappOwner;
-    } else {
-      els.ownerBox.style.display = "none";
-      els.ownerLink.href = "#";
-    }
+    const bookingId = data.bookingId;
 
-    setStatus("Booked (Pending). Tap WhatsApp to confirm.", true);
+    $("success").hidden = false;
+    $("status").textContent = "";
 
-    // Optional: reset form fields except date/time
-    // els.name.value = ""; els.mobile.value = ""; els.postcode.value = ""; els.notes.value = "";
+    $("success").querySelector("p").innerHTML =
+      `Your booking is saved as <strong>Pending</strong>.<br>Booking ID: <strong>${bookingId}</strong>`;
 
-    // Refresh times so the slot disappears immediately
-    await loadTimesForDate(payload.date);
+    // ================================
+    // WhatsApp message
+    // ================================
+
+    const msg =
+      `Hi Evergreen 👋\n\n` +
+      `I’ve just booked a job:\n\n` +
+      `Booking ID: ${bookingId}\n` +
+      `Date: ${payload.date}\n` +
+      `Time: ${payload.time}\n` +
+      `Name: ${payload.name}\n` +
+      `Mobile: ${payload.mobile}\n` +
+      `Postcode: ${payload.postcode}\n` +
+      (payload.notes ? `Notes: ${payload.notes}\n` : "") +
+      `\nThanks`;
+
+    const waLink = $("waLink");
+    waLink.href = buildWhatsAppLink(BUSINESS_WA_NUMBER, msg);
+    waLink.target = "_blank";
+    waLink.rel = "noopener";
+
   } catch (err) {
-    setStatus("Couldn’t send booking. Check Apps Script is deployed as Web App (Anyone).");
+    console.error(err);
+    showStatus(
+      "Couldn’t send booking. If this keeps happening, check the Apps Script logs.",
+      true
+    );
   }
+}
+
+// ================================
+// Init
+// ================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  populateTimes();
+
+  $("bookBtn")?.addEventListener("click", submitBooking);
 });
