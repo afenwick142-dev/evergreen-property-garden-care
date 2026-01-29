@@ -30,7 +30,7 @@ header .container {
   justify-content: space-between;
   align-items: center;
   gap: 18px;
-  padding: 18px 0;
+  padding: 16px 0;
   flex-wrap: wrap;
 }
 
@@ -38,21 +38,24 @@ header .container {
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
-  min-width: 260px;
+  gap: 12px;
+  background: #ffffff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
-  height: 54px;
+  height: 42px;   /* KEY FIX: smaller logo */
   width: auto;
   display: block;
 }
 
 .site-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 750;
+  color: #1f5f3b;
   line-height: 1.1;
-  color: #ffffff;
   letter-spacing: 0.2px;
 }
 
@@ -61,7 +64,6 @@ nav {
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
-  justify-content: flex-end;
 }
 
 nav a {
@@ -79,16 +81,18 @@ nav a:hover {
 
 /* HERO */
 .hero {
-  background: linear-gradient(rgba(31, 95, 59, 0.10), rgba(31, 95, 59, 0.06));
-  padding: 76px 0;
+  background: linear-gradient(
+    rgba(31, 95, 59, 0.10),
+    rgba(31, 95, 59, 0.06)
+  );
+  padding: 72px 0;
   text-align: center;
 }
 
 .hero h2 {
-  font-size: 40px;
+  font-size: 38px;
   margin: 0 0 14px 0;
   line-height: 1.15;
-  letter-spacing: -0.4px;
 }
 
 .hero p {
@@ -118,7 +122,6 @@ nav a:hover {
 section h2 {
   margin: 58px 0 22px 0;
   font-size: 28px;
-  letter-spacing: -0.2px;
 }
 
 .grid {
@@ -138,7 +141,7 @@ section h2 {
 .cta {
   background: #1f5f3b;
   color: #ffffff;
-  padding: 58px 0;
+  padding: 56px 0;
   text-align: center;
   margin-top: 64px;
 }
@@ -163,14 +166,14 @@ footer {
   font-size: 14px;
 }
 
-/* MOBILE FRIENDLY */
+/* MOBILE */
 @media (max-width: 900px) {
   .features {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -178,19 +181,11 @@ footer {
   header .container {
     justify-content: center;
     text-align: center;
+    gap: 14px;
   }
 
   .brand {
     justify-content: center;
-    min-width: 0;
-  }
-
-  .logo {
-    height: 46px;
-  }
-
-  .site-title {
-    font-size: 20px;
   }
 
   nav {
@@ -198,8 +193,16 @@ footer {
     gap: 14px;
   }
 
+  .logo {
+    height: 38px;
+  }
+
+  .site-title {
+    font-size: 18px;
+  }
+
   .hero {
-    padding: 54px 0;
+    padding: 52px 0;
   }
 
   .hero h2 {
@@ -212,18 +215,10 @@ footer {
 
   .features {
     grid-template-columns: 1fr;
-    padding-top: 34px;
+    padding-top: 32px;
   }
 
   .grid {
     grid-template-columns: 1fr;
-  }
-
-  .cta {
-    padding: 46px 0;
-  }
-
-  .cta h2 {
-    font-size: 24px;
   }
 }
