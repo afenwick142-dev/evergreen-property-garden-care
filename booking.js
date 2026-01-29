@@ -1,7 +1,7 @@
 /* booking.js — mobile-first estimate + booking */
 
 /** ✅ CONFIG: replace these */
-const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzpJ7Hl7pm1MlD4LJVwSfpmfNJ9vkjip0xI4puy8s_3eerVkeK1nI5JBj-p4rbv2eI/exec";
 const BUSINESS_WHATSAPP = "447000000000"; // no +, e.g. 447123456789
 
 /** Business slot rules (you can change later) */
