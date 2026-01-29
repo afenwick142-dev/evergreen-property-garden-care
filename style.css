@@ -1,69 +1,126 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: #2b2b2b;
+* {
+  box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #2b2b2b;
+  line-height: 1.6;
+  background: #ffffff;
+}
+
+/* HEADER */
 header {
   background: #1f5f3b;
   color: white;
-  padding: 15px 0;
 }
 
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+nav a {
+  color: white;
+  margin-left: 18px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* CONTAINERS */
 .container {
   width: 90%;
   max-width: 1100px;
   margin: auto;
 }
 
-nav a {
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
+/* HERO */
 .hero {
-  background: #e6f2eb;
-  padding: 60px 20px;
+  background: linear-gradient(
+    rgba(31, 95, 59, 0.08),
+    rgba(31, 95, 59, 0.08)
+  );
+  padding: 80px 20px;
   text-align: center;
 }
 
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+}
+
+/* FEATURES */
 .features {
-  display: flex;
-  justify-content: space-between;
-  padding: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 50px 0;
 }
 
 .features div {
-  background: #f4f4f4;
-  padding: 20px;
-  flex: 1;
-  margin: 5px;
+  background: #f4f6f5;
+  padding: 25px;
   text-align: center;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* SERVICES */
+section h2 {
+  margin-top: 60px;
+  margin-bottom: 25px;
+  font-size: 28px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
+  gap: 20px;
 }
 
 .grid div {
-  background: #f4f4f4;
-  padding: 20px;
+  background: #f4f6f5;
+  padding: 25px;
+  border-radius: 6px;
+  font-weight: 500;
 }
 
+/* CTA */
 .cta {
   background: #1f5f3b;
   color: white;
-  padding: 40px;
+  padding: 60px 20px;
   text-align: center;
+  margin-top: 70px;
 }
 
+.cta h2 {
+  margin-bottom: 10px;
+}
+
+/* FOOTER */
 footer {
-  background: #333;
-  color: white;
+  background: #1b1b1b;
+  color: #ccc;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
+  font-size: 14px;
 }
