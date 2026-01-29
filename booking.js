@@ -1,10 +1,10 @@
 // =====================================
-// Evergreen Booking – FULL booking.js
+// Evergreen Booking – FULL booking.js (WITH INSTANT ESTIMATE + SAVE)
 // =====================================
 
 // 🔗 Google Apps Script Web App (LIVE)
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbzpJ7Hl7pm1MlD4LJVwSfpmfNJ9vkjip0xI4puy8s_3eerVkeK1nI5JBj-p4rbv2eI/exec";
+  "https://script.google.com/macros/s/AKfycbzpJ7Hl7pm1MlD4LJVwSfpmfNJ9vkjip0xI4puy8s_3 опыт earVkeK1nI5JBj-p4rbv2eI/exec".replace(" ", "");
 
 // 📱 WhatsApp Business number (UK → international)
 const BUSINESS_WA_NUMBER = "447825250141";
@@ -41,16 +41,7 @@ function populateTimes() {
   const timeSelect = $("time");
   if (!timeSelect) return;
 
-  const times = [
-    "09:00",
-    "10:00",
-    "11:00",
-    "12:00",
-    "13:00",
-    "14:00",
-    "15:00",
-  ];
-
+  const times = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00"];
   timeSelect.innerHTML = `<option value="">Select a time</option>`;
   times.forEach((t) => {
     const opt = document.createElement("option");
@@ -61,7 +52,52 @@ function populateTimes() {
 }
 
 // -------------------------------------
-// Submit booking
+// Instant Estimator (no contact needed)
+// -------------------------------------
+const PRICING = {
+  lawn: { small: [25, 35], medium: [35, 55], large: [55, 80] },
+  hedge: { small: [30, 50], medium: [50, 85], large: [85, 140] },
+  tidy: { small: [45, 70], medium: [70, 120], large: [120, 200] },
+  clear: { small: [60, 100], medium: [100, 180], large: [180, 300] },
+  general: { small: [35, 60], medium: [60, 110], large: [110, 180] },
+};
+
+const ACCESS_MULT = { easy: 1.0, average: 1.15, difficult: 1.35 };
+const WASTE_ADD = { no: 0, some: 20, lots: 45 };
+
+let lastEstimateText = ""; // saved into sheet + WhatsApp
+
+function formatRange(min, max) {
+  return `£${min}–£${max}`;
+}
+
+function calculateEstimate() {
+  const jobType = $("jobType")?.value || "tidy";
+  const size = $("size")?.value || "medium";
+  const access = $("access")?.value || "easy";
+  const waste = $("waste")?.value || "no";
+
+  const base = PRICING[jobType]?.[size] || [70, 120];
+  const mult = ACCESS_MULT[access] ?? 1.0;
+  const add = WASTE_ADD[waste] ?? 0;
+
+  const min = Math.round(base[0] * mult + add);
+  const max = Math.round(base[1] * mult + add);
+
+  const estimateEl = $("estimate");
+  const noteEl = $("estimateNote");
+
+  lastEstimateText = `${formatRange(min, max)} (type: ${jobType}, size: ${size}, access: ${access}, waste: ${waste})`;
+
+  if (estimateEl) estimateEl.textContent = formatRange(min, max);
+  if (noteEl) {
+    noteEl.textContent =
+      "Online estimate — final price may change if access/condition differs significantly.";
+  }
+}
+
+// -------------------------------------
+// Submit booking (includes estimate)
 // -------------------------------------
 async function submitBooking() {
   const date = $("date")?.value;
@@ -76,6 +112,11 @@ async function submitBooking() {
     return;
   }
 
+  // If estimator exists on page but user didn’t click Calculate, do it automatically
+  if ($("jobType") && !lastEstimateText) {
+    calculateEstimate();
+  }
+
   const payload = {
     date,
     time,
@@ -83,6 +124,7 @@ async function submitBooking() {
     mobile,
     postcode,
     notes,
+    estimate: lastEstimateText || "",
     source: "Website",
   };
 
@@ -102,31 +144,32 @@ async function submitBooking() {
       return;
     }
 
-    // -------------------------------
-    // Success UI
-    // -------------------------------
     showStatus("Booked ✓", true);
 
     const bookingId = data.bookingId;
 
-    const msg =
-      `Hi Evergreen 👋%0A%0A` +
-      `I’ve just booked a job via your website:%0A` +
-      `• Name: ${name}%0A` +
-      `• Date: ${date}%0A` +
-      `• Time: ${time}%0A` +
-      `• Postcode: ${postcode}%0A` +
-      (notes ? `• Notes: ${notes}%0A` : "") +
-      `%0ABooking ID: ${bookingId}`;
+    const msgLines = [
+      `Hi Evergreen 👋`,
+      ``,
+      `I’ve just booked a job via your website:`,
+      `• Name: ${name}`,
+      `• Date: ${date}`,
+      `• Time: ${time}`,
+      `• Postcode: ${postcode}`,
+    ];
 
-    const waLink = buildWhatsAppLink(msg);
+    if (lastEstimateText) msgLines.push(`• Estimate: ${lastEstimateText.split(" (")[0]}`);
+    if (notes) msgLines.push(`• Notes: ${notes}`);
+
+    msgLines.push(``, `Booking ID: ${bookingId}`);
+
+    const waLink = buildWhatsAppLink(msgLines.join("\n"));
 
     const successBox = $("success");
     const waBtn = $("waLink");
 
     if (successBox) successBox.hidden = false;
     if (waBtn) waBtn.href = waLink;
-
   } catch (err) {
     console.error(err);
     showStatus("Could not connect to booking service.");
@@ -138,5 +181,13 @@ async function submitBooking() {
 // -------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   populateTimes();
+
+  // Estimator wiring (only if those elements exist on the page)
+  $("calcBtn")?.addEventListener("click", calculateEstimate);
+  $("jobType")?.addEventListener("change", () => (lastEstimateText = ""));
+  $("size")?.addEventListener("change", () => (lastEstimateText = ""));
+  $("access")?.addEventListener("change", () => (lastEstimateText = ""));
+  $("waste")?.addEventListener("change", () => (lastEstimateText = ""));
+
   $("bookBtn")?.addEventListener("click", submitBooking);
 });
