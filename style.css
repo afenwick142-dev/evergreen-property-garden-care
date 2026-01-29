@@ -1,4 +1,4 @@
-/* style.css — FULL FILE REPLACEMENT (V3: modern, tighter, more professional) */
+/* style.css — FULL FILE REPLACEMENT (Bigger logo, no pill, tapered flowing gradient) */
 
 :root{
   --green:#1f5f3b;
@@ -45,21 +45,57 @@ header{
   padding:12px 0;
 }
 
-/* LOGO */
+/* BRAND AREA (FLOW GRADIENT BACKPLATE) */
 .brand{
+  position: relative;
   display:flex;
   align-items:center;
-  gap:10px;
+  padding: 10px 14px;
+  border-radius: 18px;
 }
 
+/* Tapered / flowing gradient: left white to right green, feathered edges */
+.brand::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  border-radius: 18px;
+
+  /* The "flow": strong white on the left, fading into transparent so the header shows through */
+  background:
+    linear-gradient(90deg,
+      rgba(255,255,255,0.92) 0%,
+      rgba(255,255,255,0.70) 28%,
+      rgba(255,255,255,0.22) 60%,
+      rgba(255,255,255,0.00) 78%
+    );
+
+  /* Taper the shape so it feels like it flows right */
+  clip-path: polygon(
+    0% 0%,
+    88% 0%,
+    100% 50%,
+    88% 100%,
+    0% 100%,
+    0% 0%
+  );
+
+  /* soften the "edge" so it blends naturally */
+  filter: blur(0.2px);
+  opacity: 1;
+}
+
+/* LOGO (BIGGER + READABLE) */
 .logo{
-  height:44px;      /* sensible size */
-  width:auto;
+  position: relative; /* sits above the ::before gradient */
+  height: 72px;       /* SIGNIFICANTLY bigger */
+  width: auto;
   display:block;
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.18));
-  background: #ffffff;
-  padding:6px 10px;
-  border-radius: 12px;  /* not a circle */
+
+  /* Make it pop without a white pill */
+  filter:
+    drop-shadow(0 4px 10px rgba(0,0,0,0.22))
+    drop-shadow(0 1px 0 rgba(255,255,255,0.25));
 }
 
 /* NAV */
@@ -344,7 +380,11 @@ footer{
   }
 
   .logo{
-    height: 40px;
+    height: 58px; /* still readable on mobile */
+  }
+
+  .brand{
+    padding: 8px 12px;
   }
 
   .hero{
