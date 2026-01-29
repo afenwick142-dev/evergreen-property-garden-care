@@ -1,8 +1,12 @@
-/* style.css — FULL FILE REPLACEMENT (NO PILL, BIG READABLE LOGO, HEADER BACKGROUND FLOW GRADIENT) */
+/* style.css — FULL FILE REPLACEMENT
+   NO PILL
+   BIG READABLE LOGO
+   FLOWING HEADER GRADIENT (LEFT WHITE → RIGHT GREEN)
+*/
 
 :root{
   --green:#1f5f3b;
-  --green2:#184a2e;
+  --green-dark:#184a2e;
   --bg:#f6f8f7;
   --card:#ffffff;
   --text:#1f2b25;
@@ -17,7 +21,7 @@
 
 body{
   margin:0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family:"Segoe UI", Arial, sans-serif;
   color:var(--text);
   background:var(--bg);
   line-height:1.6;
@@ -28,98 +32,69 @@ body{
   margin:0 auto;
 }
 
-/* HEADER (BACKGROUND FLOW GRADIENT - THIS IS THE CHANGE, NOT THE LOGO) */
+/* HEADER — BACKGROUND DOES THE WORK */
 header{
   position: sticky;
   top:0;
   z-index:50;
-  /* base header colour */
-  background: linear-gradient(90deg, var(--green2), var(--green));
+
+  /* Flowing / tapered gradient */
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #f4f7f5 18%,
+      rgba(31,95,59,0.15) 35%,
+      rgba(31,95,59,0.55) 55%,
+      var(--green-dark) 75%,
+      var(--green) 100%
+    );
+
   box-shadow: 0 10px 20px rgba(0,0,0,0.14);
-  overflow: hidden;
-}
-
-/* Flowing / tapered background overlay: LEFT WHITE -> RIGHT GREEN */
-header::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-
-  /* white fades into transparent so the green base shows through */
-  background: linear-gradient(90deg,
-    rgba(255,255,255,0.96) 0%,
-    rgba(255,255,255,0.78) 18%,
-    rgba(255,255,255,0.38) 38%,
-    rgba(255,255,255,0.12) 54%,
-    rgba(255,255,255,0.00) 68%
-  );
-
-  /* tapered "flow" shape */
-  clip-path: polygon(
-    0% 0%,
-    62% 0%,
-    72% 50%,
-    62% 100%,
-    0% 100%
-  );
-
-  /* soften the edge */
-  filter: blur(0.6px);
-  opacity: 1;
 }
 
 .header-inner{
-  position: relative; /* above header::before */
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:16px;
-  padding:12px 0;
+  gap:18px;
+  padding:14px 0;
 }
 
-/* BRAND (NO PILL / NO BACKPLATE) */
+/* BRAND — LOGO ONLY, NO BACKGROUND */
 .brand{
-  position: relative;
   display:flex;
   align-items:center;
-  padding: 0;               /* no padding */
-  background: transparent;  /* no background */
-  border-radius: 0;
 }
 
-/* LOGO (BIGGER + READABLE, NO PILL ON THE LOGO) */
+/* LOGO — BIG & READABLE */
 .logo{
-  position: relative;
-  height: 78px;   /* significantly bigger so text is readable */
+  height: 88px;          /* deliberately large */
   width: auto;
   display:block;
 
-  /* pop without changing logo artwork */
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.22));
-  background: transparent;  /* IMPORTANT: no white pill */
-  padding: 0;               /* IMPORTANT: no padding */
-  border-radius: 0;         /* IMPORTANT: no rounding */
+  /* subtle separation from background */
+  filter:
+    drop-shadow(0 4px 10px rgba(0,0,0,0.25));
 }
 
 /* NAV */
 nav{
-  position: relative;
   display:flex;
-  gap:10px;
+  gap:12px;
   flex-wrap:wrap;
   justify-content:flex-end;
 }
 
 nav a{
-  color:#fff;
+  color:#ffffff;
   text-decoration:none;
   font-weight:700;
   font-size:15px;
   padding:10px 12px;
   border-radius:12px;
-  opacity:0.96;
-  transition: background 0.12s ease, transform 0.12s ease, opacity 0.12s ease;
+  opacity:0.95;
+  transition: background 0.12s ease, transform 0.12s ease;
 }
 
 nav a:hover{
@@ -131,8 +106,8 @@ nav a:hover{
 /* HERO */
 .hero{
   background:
-    radial-gradient(900px 340px at 20% 0%, rgba(31,95,59,0.20), transparent 60%),
-    radial-gradient(900px 340px at 80% 0%, rgba(31,95,59,0.16), transparent 60%),
+    radial-gradient(900px 340px at 20% 0%, rgba(31,95,59,0.18), transparent 60%),
+    radial-gradient(900px 340px at 80% 0%, rgba(31,95,59,0.14), transparent 60%),
     linear-gradient(#f9fbfa, #f1f6f3);
   padding: 56px 0 42px;
   border-bottom: 1px solid var(--line);
@@ -181,11 +156,11 @@ nav a:hover{
   font-size:15px;
   padding: 12px 16px;
   border-radius: 14px;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 
 .btn-primary{
-  background: linear-gradient(90deg, var(--green2), var(--green));
+  background: linear-gradient(90deg, var(--green-dark), var(--green));
   color:#fff;
   box-shadow: var(--shadow2);
 }
@@ -196,9 +171,9 @@ nav a:hover{
 }
 
 .btn-outline{
-  background: #ffffff;
-  color: var(--green2);
-  border: 1px solid rgba(31,95,59,0.30);
+  background:#ffffff;
+  color:var(--green-dark);
+  border:1px solid rgba(31,95,59,0.35);
 }
 
 .btn-outline:hover{
@@ -206,6 +181,7 @@ nav a:hover{
   box-shadow: var(--shadow2);
 }
 
+/* QUICK LIST */
 .quick-list{
   margin:0;
   padding:0;
@@ -218,7 +194,7 @@ nav a:hover{
   display:flex;
   gap:12px;
   align-items:flex-start;
-  padding: 12px 12px;
+  padding: 12px;
   border-radius: 14px;
   background: #f6f9f7;
   border: 1px solid rgba(0,0,0,0.06);
@@ -231,7 +207,7 @@ nav a:hover{
   display:flex;
   align-items:center;
   justify-content:center;
-  background: rgba(31,95,59,0.10);
+  background: rgba(31,95,59,0.12);
   font-size: 18px;
 }
 
@@ -262,7 +238,7 @@ nav a:hover{
   max-width: 75ch;
 }
 
-/* TRUST CARDS */
+/* TRUST */
 .trust-grid{
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
@@ -307,24 +283,13 @@ nav a:hover{
   box-shadow: var(--shadow);
 }
 
-.service h3{
-  margin: 10px 0 6px 0;
-  font-size: 16px;
-}
-
-.service p{
-  margin:0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* CTA STRIP */
+/* CTA */
 .cta{
   padding: 44px 0 56px;
 }
 
 .cta-inner{
-  background: linear-gradient(90deg, var(--green2), var(--green));
+  background: linear-gradient(90deg, var(--green-dark), var(--green));
   color:#fff;
   border-radius: var(--r);
   box-shadow: var(--shadow);
@@ -336,31 +301,11 @@ nav a:hover{
   flex-wrap: wrap;
 }
 
-.cta-inner h2{
-  margin:0;
-  font-size: 22px;
-}
-
-.cta-inner p{
-  margin:6px 0 0 0;
-  opacity:0.95;
-}
-
 /* FOOTER */
 footer{
   background:#101413;
   color:#cfd6d2;
   padding: 18px 0;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap: wrap;
-  align-items:center;
-  font-size: 14px;
 }
 
 /* MOBILE */
@@ -370,14 +315,9 @@ footer{
 }
 
 @media (max-width: 760px){
-  .trust-grid,
-  .services-grid{
-    grid-template-columns: 1fr;
-  }
-
   .header-inner{
     justify-content:center;
-    gap:10px;
+    gap:12px;
   }
 
   nav{
@@ -385,7 +325,7 @@ footer{
   }
 
   .logo{
-    height: 62px; /* still readable on mobile */
+    height: 64px; /* still readable on mobile */
   }
 
   .hero{
@@ -398,5 +338,10 @@ footer{
 
   .hero p{
     font-size: 16px;
+  }
+
+  .trust-grid,
+  .services-grid{
+    grid-template-columns: 1fr;
   }
 }
