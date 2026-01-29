@@ -1,9 +1,8 @@
-<!-- booking.html (FULL FILE REPLACEMENT) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Book a Slot | Evergreen</title>
+  <title>Book a Job | Evergreen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -20,7 +19,6 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
-      <a href="about.html">About</a>
       <a href="gallery.html">Gallery</a>
       <a href="booking.html" class="active">Book</a>
       <a href="contact.html">Contact</a>
@@ -29,39 +27,19 @@
 </header>
 
 <main class="container page">
-  <h1 class="page-title">Book a Slot</h1>
-  <p class="page-sub">Pick a date & time and submit. You’ll get a WhatsApp confirmation link at the end.</p>
+  <h1 class="page-title">Instant Estimate + Booking</h1>
+  <p class="page-sub">
+    Get a quick price range with no hassle, then book an available slot in seconds.
+  </p>
 
   <section class="card">
-    <h2 class="card-title">Booking details</h2>
+    <h2 class="card-title">1) Quick details</h2>
 
-    <!-- IMPORTANT:
-         This uses a normal POST form to Apps Script (via hidden iframe),
-         so it works from GitHub Pages WITHOUT CORS headaches. -->
-    <form id="bookingForm" class="form">
-      <div class="grid-2">
-        <label class="field">
-          <span>Date</span>
-          <input id="date" name="date" type="date" required />
-        </label>
-
-        <label class="field">
-          <span>Time</span>
-          <select id="time" name="time" required>
-            <option value="09:00">09:00</option>
-            <option value="10:30">10:30</option>
-            <option value="12:00">12:00</option>
-            <option value="13:30">13:30</option>
-            <option value="15:00">15:00</option>
-          </select>
-          <small class="hint">We’ll tighten this into real “available slots” next.</small>
-        </label>
-      </div>
-
+    <div class="grid-2">
       <label class="field">
         <span>Job type</span>
-        <select id="jobType" name="jobType" required>
-          <option value="Grass cutting / lawn care">Grass cutting / lawn care</option>
+        <select id="jobType">
+          <option value="Grass cutting / lawn care">Grass cutting / Lawn care</option>
           <option value="Hedge trimming">Hedge trimming</option>
           <option value="Garden tidy-up">Garden tidy-up</option>
           <option value="Clearance / waste removal">Clearance / waste removal</option>
@@ -69,59 +47,71 @@
         </select>
       </label>
 
-      <div class="grid-2">
-        <label class="field">
-          <span>Name</span>
-          <input id="name" name="name" type="text" placeholder="e.g. Anthony" required />
-        </label>
+      <label class="field">
+        <span>Estimate (optional)</span>
+        <select id="estimate">
+          <option value="">—</option>
+          <option value="Small job (up to 1 hour)">Small job (up to 1 hour)</option>
+          <option value="Medium job (1–3 hours)">Medium job (1–3 hours)</option>
+          <option value="Large job (half day+)">Large job (half day+)</option>
+        </select>
+      </label>
+    </div>
+  </section>
 
-        <label class="field">
-          <span>Mobile (WhatsApp)</span>
-          <input id="mobile" name="mobile" type="tel" placeholder="e.g. 07..." required />
-        </label>
+  <section class="card">
+    <h2 class="card-title">2) Book an available date & time</h2>
 
-        <label class="field">
-          <span>Postcode</span>
-          <input id="postcode" name="postcode" type="text" placeholder="e.g. CF33 4PZ" required />
-        </label>
+    <div class="grid-2">
+      <label class="field">
+        <span>Select date</span>
+        <input id="date" type="date" />
+      </label>
 
-        <label class="field">
-          <span>Estimate (optional)</span>
-          <select id="estimate" name="estimate">
-            <option value="">—</option>
-            <option value="Small job (up to 1 hour)">Small job (up to 1 hour)</option>
-            <option value="Medium job (1–2 hours)">Medium job (1–2 hours)</option>
-            <option value="Large job (2+ hours)">Large job (2+ hours)</option>
-          </select>
-        </label>
-      </div>
+      <label class="field">
+        <span>Available times</span>
+        <select id="time">
+          <option value="">Pick a date first</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="grid-2">
+      <label class="field">
+        <span>Your name</span>
+        <input id="name" type="text" placeholder="e.g. Anthony" />
+      </label>
+
+      <label class="field">
+        <span>Mobile (WhatsApp)</span>
+        <input id="mobile" type="tel" placeholder="e.g. 07..." />
+      </label>
+
+      <label class="field">
+        <span>Postcode</span>
+        <input id="postcode" type="text" placeholder="e.g. CF33..." />
+      </label>
 
       <label class="field">
         <span>Notes (optional)</span>
-        <textarea id="notes" name="notes" rows="4" placeholder="Any details that help (access, parking, size, photos etc)"></textarea>
+        <input id="notes" type="text" placeholder="e.g. front + back, side access, parking issues" />
       </label>
+    </div>
 
-      <!-- hidden fields that Apps Script will log -->
-      <input type="hidden" id="source" name="source" value="Website" />
-      <input type="hidden" id="bookingId" name="bookingId" value="" />
+    <button class="btn btn-primary full" id="bookBtn" type="button">Book this slot</button>
 
-      <div class="actions">
-        <button class="btn btn-primary" id="bookBtn" type="submit">Book now</button>
-        <button class="btn btn-outline" id="clearBtn" type="button">Clear</button>
+    <div id="status" class="status"></div>
+
+    <div id="success" class="success" hidden>
+      <h3>Booked ✅</h3>
+      <p><strong>Booking ID:</strong> <span id="bookingIdText"></span></p>
+      <p>Your booking is saved as <strong>Pending</strong>. Tap below to confirm on WhatsApp (pre-filled).</p>
+      <a id="waLink" class="btn btn-outline full" href="#" target="_blank" rel="noopener">Confirm on WhatsApp</a>
+
+      <div id="ownerBox" class="fineprint" style="margin-top:10px; display:none;">
+        <strong>Owner link:</strong> <a id="ownerLink" href="#" target="_blank" rel="noopener">Message customer</a>
       </div>
-
-      <div id="status" class="status"></div>
-
-      <div id="success" class="success" hidden>
-        <h3>Booked ✅</h3>
-        <p>Your booking has been logged.</p>
-        <p><strong>Next:</strong> tap below to confirm via WhatsApp (pre-filled message).</p>
-        <a id="waLink" class="btn btn-outline full" href="#" target="_blank" rel="noopener">Confirm on WhatsApp</a>
-      </div>
-    </form>
-
-    <!-- hidden iframe target to avoid CORS issues -->
-    <iframe id="hiddenFrame" name="hiddenFrame" style="display:none;"></iframe>
+    </div>
   </section>
 </main>
 
