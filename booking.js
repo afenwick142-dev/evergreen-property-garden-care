@@ -1,6 +1,6 @@
 // =====================================
 // booking.js  (Website)
-// REAL AVAILABILITY (Option 2)
+// REAL AVAILABILITY + OWNER ALERT (Option 3)
 // =====================================
 
 // 🔗 Google Apps Script Web App (LIVE)
@@ -14,14 +14,6 @@ const BUSINESS_WA_NUMBER = "447825250141";
 // Helpers
 // -------------------------------------
 const $ = (id) => document.getElementById(id);
-
-function toInternationalUK(mobile) {
-  if (!mobile) return "";
-  const digits = String(mobile).replace(/\D/g, "");
-  if (digits.startsWith("44")) return digits;
-  if (digits.startsWith("0")) return "44" + digits.slice(1);
-  return digits;
-}
 
 function buildWhatsAppLink(text) {
   const encoded = encodeURIComponent(text);
@@ -69,7 +61,7 @@ async function loadAvailableTimes(date) {
       timeSelect.appendChild(opt);
     });
 
-    showStatus(""); // clear any old messages
+    showStatus("");
   } catch (err) {
     console.error(err);
     timeSelect.innerHTML = `<option value="">No times available</option>`;
@@ -147,6 +139,7 @@ async function submitBooking() {
     notes,
     estimate: lastEstimateText || "",
     source: "Website",
+    jobType: $("jobType")?.value || ""
   };
 
   showStatus("Saving booking…");
@@ -162,12 +155,11 @@ async function submitBooking() {
 
     if (!data.success) {
       showStatus(data.message || "Booking failed. Pick another time.");
-      // refresh times (slot might have been taken)
       await loadAvailableTimes(date);
       return;
     }
 
-    showStatus("Booked ✓", true);
+    showStatus("Booked ✓ (Pending)", true);
 
     const bookingId = data.bookingId;
 
@@ -194,7 +186,22 @@ async function submitBooking() {
     if (successBox) successBox.hidden = false;
     if (waBtn) waBtn.href = waLink;
 
-    // remove the booked time from dropdown immediately
+    // Optional owner links (if these elements exist in your HTML)
+    const ownerBox = $("ownerBox");
+    const ownerLink = $("ownerLink");
+    if (ownerBox && ownerLink && data.whatsappOwner) {
+      ownerBox.style.display = "block";
+      ownerLink.href = data.whatsappOwner;
+      ownerLink.textContent = "Send owner alert on WhatsApp";
+    }
+
+    // Optional message-customer link (if mobile is usable)
+    const msgCustomerLink = $("msgCustomerLink");
+    if (msgCustomerLink && data.whatsappToCustomer) {
+      msgCustomerLink.href = data.whatsappToCustomer;
+      msgCustomerLink.style.display = "inline-block";
+    }
+
     await loadAvailableTimes(date);
 
   } catch (err) {
@@ -207,23 +214,19 @@ async function submitBooking() {
 // Init
 // -------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-  // Date change => load real available times
   $("date")?.addEventListener("change", (e) => {
     const date = e.target.value;
     if (date) loadAvailableTimes(date);
   });
 
-  // Estimator wiring (only if present)
   $("calcBtn")?.addEventListener("click", calculateEstimate);
   $("jobType")?.addEventListener("change", () => (lastEstimateText = ""));
   $("size")?.addEventListener("change", () => (lastEstimateText = ""));
   $("access")?.addEventListener("change", () => (lastEstimateText = ""));
   $("waste")?.addEventListener("change", () => (lastEstimateText = ""));
 
-  // Book
   $("bookBtn")?.addEventListener("click", submitBooking);
 
-  // If a date is already prefilled, load slots straight away
   const pre = $("date")?.value;
   if (pre) loadAvailableTimes(pre);
 });
