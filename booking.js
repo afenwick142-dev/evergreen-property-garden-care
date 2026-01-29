@@ -14,7 +14,7 @@ const LOOKAHEAD_DAYS = 21;   // show next 3 weeks
 const £ = (n) => "£" + n.toFixed(0);
 const el = (id) => document.getElementById(id);
 
-function todayISO() ok {
+function todayISO() {
   const d = new Date();
   d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
   return d.toISOString().slice(0, 10);
