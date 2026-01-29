@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book a Job | Evergreen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="brand">
+      <a href="index.html" aria-label="Home">
+        <img src="logo.png" class="logo" alt="Evergreen logo">
+      </a>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="booking.html" class="active">Book</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container page">
+  <h1 class="page-title">Instant Estimate + Booking</h1>
+  <p class="page-sub">
+    Get a quick price range with no hassle, then book an available slot in seconds.
+  </p>
+
+  <!-- ESTIMATOR -->
+  <section class="card">
+    <h2 class="card-title">1) Instant estimate (no contact details needed)</h2>
+
+    <div class="grid-2">
+      <label class="field">
+        <span>Job type</span>
+        <select id="jobType">
+          <option value="lawn">Grass cutting / Lawn care</option>
+          <option value="hedge">Hedge trimming</option>
+          <option value="tidy">Garden tidy-up</option>
+          <option value="clear">Clearance / waste removal</option>
+          <option value="general">General outdoor maintenance</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Size</span>
+        <select id="size">
+          <option value="small">Small</option>
+          <option value="medium" selected>Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Access</span>
+        <select id="access">
+          <option value="easy" selected>Easy</option>
+          <option value="average">Average</option>
+          <option value="difficult">Difficult</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Waste removal needed?</span>
+        <select id="waste">
+          <option value="no" selected>No</option>
+          <option value="some">Some</option>
+          <option value="lots">Lots</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="estimate-box">
+      <div>
+        <div class="estimate-label">Estimated price range</div>
+        <div id="estimate" class="estimate-price">£—</div>
+        <div id="estimateNote" class="estimate-note"></div>
+      </div>
+      <button class="btn btn-primary" id="calcBtn" type="button">Calculate</button>
+    </div>
+
+    <div class="fineprint">
+      Estimates are based on typical jobs. If access/condition differs significantly, final price may change.
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="card">
+    <h2 class="card-title">2) Book an available date & time</h2>
+
+    <div class="grid-2">
+      <label class="field">
+        <span>Select date</span>
+        <input id="date" type="date" />
+      </label>
+
+      <label class="field">
+        <span>Available times</span>
+        <select id="time">
+          <option value="">Pick a date first</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="grid-2">
+      <label class="field">
+        <span>Your name</span>
+        <input id="name" type="text" placeholder="e.g. Anthony" />
+      </label>
+
+      <label class="field">
+        <span>Mobile (WhatsApp)</span>
+        <input id="mobile" type="tel" placeholder="e.g. 07..." />
+      </label>
+
+      <label class="field">
+        <span>Postcode</span>
+        <input id="postcode" type="text" placeholder="e.g. CF33..." />
+      </label>
+
+      <label class="field">
+        <span>Short notes (optional)</span>
+        <input id="notes" type="text" placeholder="e.g. front + back garden, side access" />
+      </label>
+    </div>
+
+    <button class="btn btn-primary full" id="bookBtn" type="button">Book this slot</button>
+
+    <div id="status" class="status"></div>
+
+    <div id="success" class="success" hidden>
+      <h3>Booked ✅</h3>
+      <p>Your booking has been logged.</p>
+      <p><strong>Next:</strong> tap below to confirm details on WhatsApp (pre-filled message).</p>
+      <a id="waLink" class="btn btn-outline full" href="#" target="_blank" rel="noopener">Confirm on WhatsApp</a>
+      <p class="fineprint">If you prefer, you can just turn up at your booked time — WhatsApp simply helps confirm details/photos.</p>
+    </div>
+  </section>
+</main>
+
+<script src="booking.js"></script>
+</body>
+</html>
