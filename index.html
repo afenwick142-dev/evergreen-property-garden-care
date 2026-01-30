@@ -1,167 +1,191 @@
+<!-- ================================
+     index.html (FULL FILE)
+================================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Evergreen Property &amp; Garden Care | South Wales</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Evergreen Property &amp; Garden Care providing reliable garden and property maintenance services across South Wales.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Evergreen | Property & Garden Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
+<header class="site-header">
   <div class="container header-inner">
     <div class="brand">
-      <img src="logo.png" alt="Evergreen Property &amp; Garden Care logo" class="logo">
+      <a href="index.html" aria-label="Evergreen home">
+        <img src="logo.png" alt="Evergreen logo" />
+      </a>
+      <div class="brand-text" aria-hidden="true">
+        <strong>Evergreen</strong>
+        <span>Property &amp; Garden Care</span>
+      </div>
     </div>
 
-    <nav>
-      <a href="index.html">Home</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
       <a href="services.html">Services</a>
       <a href="about.html">About</a>
       <a href="gallery.html">Gallery</a>
+      <a href="booking.html">Book</a>
       <a href="contact.html">Contact</a>
     </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-wide" href="booking.html">Book a Slot</a>
+      <a class="btn btn-ghost" href="contact.html">Quick Message</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" type="button" aria-expanded="false" aria-controls="mobileDrawer">
+      Menu
+    </button>
+  </div>
+
+  <div class="container mobile-drawer" id="mobileDrawer" aria-label="Mobile menu">
+    <a href="index.html" class="active">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="booking.html">Book</a>
+    <a href="contact.html">Contact</a>
   </div>
 </header>
 
-<section class="hero">
-  <div class="container hero-grid">
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <span class="badge">South Wales • Reliable • No fuss</span>
+        <h1>Property &amp; Garden Care Across South Wales</h1>
+        <p>
+          Grass cutting, hedge trimming, garden tidy-ups and general outdoor maintenance.
+          Friendly, dependable service with work done properly.
+        </p>
 
-    <div class="hero-card">
-      <h1>Property &amp; Garden Care<br>Across South Wales</h1>
-      <p>
-        Grass cutting, hedge trimming, garden tidy-ups and general outdoor maintenance.
-        Friendly, dependable service with work done properly.
+        <div class="hero-actions">
+          <a class="btn btn-solid-green btn-wide" href="booking.html">Instant Estimate + Booking</a>
+          <a class="btn btn-outline btn-wide" href="services.html">See Services</a>
+        </div>
+
+        <div class="fineprint">
+          Startup-friendly pricing. Clear communication. Turning up when we say we will.
+        </div>
+      </div>
+
+      <div class="hero-points" aria-label="Key benefits">
+        <div class="point">
+          <div class="icon" aria-hidden="true">
+            <!-- pin icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s7-4.6 7-12a7 7 0 1 0-14 0c0 7.4 7 12 7 12Z" stroke="#0f3a2a" stroke-width="2"/>
+              <path d="M12 10.2a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4Z" stroke="#0f3a2a" stroke-width="2"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Local &amp; reliable</h3>
+            <p>South Wales service with clear communication.</p>
+          </div>
+        </div>
+
+        <div class="point">
+          <div class="icon" aria-hidden="true">
+            <!-- calendar icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M7 3v3M17 3v3" stroke="#0f3a2a" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 8h16" stroke="#0f3a2a" stroke-width="2"/>
+              <path d="M6 6h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" stroke="#0f3a2a" stroke-width="2"/>
+            </svg>
+          </div>
+          <div>
+            <h3>One-off or regular</h3>
+            <p>Tidy-ups, seasonal clear-outs, or ongoing upkeep.</p>
+          </div>
+        </div>
+
+        <div class="point">
+          <div class="icon" aria-hidden="true">
+            <!-- chat icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M21 14a6 6 0 0 1-6 6H8l-5 3V8a6 6 0 0 1 6-6h6a6 6 0 0 1 6 6v6Z" stroke="#0f3a2a" stroke-width="2"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Transparent pricing</h3>
+            <p>Quick online estimate + simple booking. No waffle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Evergreen?</h2>
+      <p class="lead">
+        A dependable service for households and landlords who want outdoor spaces kept tidy, safe, and presentable.
       </p>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="contact.html">Get a Free Quote</a>
-        <a class="btn btn-outline" href="services.html">View Services</a>
+      <div class="cards">
+        <div class="card">
+          <h3>Turn up. Do the job. Leave it tidy.</h3>
+          <p>Simple standards, done consistently.</p>
+        </div>
+        <div class="card">
+          <h3>Friendly, professional approach</h3>
+          <p>Clear comms and a proper finish — no surprises.</p>
+        </div>
+        <div class="card">
+          <h3>Book online in seconds</h3>
+          <p>Pick a slot that suits you. Your booking is logged instantly.</p>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <div class="cards">
+        <div class="card">
+          <h3>Popular starter services</h3>
+          <p>Grass cutting, hedge trimming, garden tidy-ups, general maintenance.</p>
+        </div>
+        <div class="card">
+          <h3>Perfect for rentals</h3>
+          <p>Quick turnarounds for landlords and property managers.</p>
+        </div>
+        <div class="card">
+          <h3>Prefer WhatsApp?</h3>
+          <p>Use the booking page to send a pre-filled WhatsApp message in one tap.</p>
+        </div>
       </div>
     </div>
+  </section>
+</main>
 
-    <div class="hero-card">
-      <ul class="quick-list">
-        <li class="quick-item">
-          <div class="icon">📍</div>
-          <div>
-            <strong>Local &amp; reliable</strong>
-            <span>South Wales service with clear communication.</span>
-          </div>
-        </li>
-        <li class="quick-item">
-          <div class="icon">🧹</div>
-          <div>
-            <strong>One-off or regular</strong>
-            <span>Tidy-ups, seasonal clear-outs, or ongoing upkeep.</span>
-          </div>
-        </li>
-        <li class="quick-item">
-          <div class="icon">💬</div>
-          <div>
-            <strong>Transparent pricing</strong>
-            <span>Straightforward quotes — no waffle.</span>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2>Why Evergreen?</h2>
-    <p class="lead">
-      A dependable service for households and landlords who want outdoor spaces kept tidy, safe, and presentable.
-    </p>
-
-    <div class="trust-grid">
-      <div class="trust">
-        <b>Turn up. Do the job. Leave it tidy.</b>
-        <small>Simple standards, done consistently.</small>
-      </div>
-      <div class="trust">
-        <b>Friendly, professional approach</b>
-        <small>Clear comms and a proper finish.</small>
-      </div>
-      <div class="trust">
-        <b>Flexible work</b>
-        <small>One-off jobs or regular maintenance plans.</small>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2>Our Services</h2>
-    <p class="lead">
-      The essentials that make the biggest difference — with a focus on reliability and presentation.
-    </p>
-
-    <div class="services-grid">
-      <div class="service">
-        <div class="icon">🌿</div>
-        <h3>Grass Cutting &amp; Lawn Care</h3>
-        <p>One-off cuts or regular visits to keep lawns neat and healthy.</p>
-      </div>
-
-      <div class="service">
-        <div class="icon">✂️</div>
-        <h3>Hedge Trimming &amp; Shaping</h3>
-        <p>Clean lines, tidy edges, and safer access around paths.</p>
-      </div>
-
-      <div class="service">
-        <div class="icon">🧤</div>
-        <h3>Weeding &amp; Borders</h3>
-        <p>Keep beds and borders under control and looking cared for.</p>
-      </div>
-
-      <div class="service">
-        <div class="icon">🧹</div>
-        <h3>Garden Tidy-Ups</h3>
-        <p>Perfect for overgrown gardens, rentals, and seasonal clear-outs.</p>
-      </div>
-
-      <div class="service">
-        <div class="icon">🚚</div>
-        <h3>Property Clear-Outs</h3>
-        <p>Outdoor clear-outs and removal of unwanted garden waste/items.</p>
-      </div>
-
-      <div class="service">
-        <div class="icon">🏡</div>
-        <h3>General Outdoor Maintenance</h3>
-        <p>A helping hand with a range of outdoor property tasks.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="container">
-    <div class="cta-inner">
-      <div>
-        <h2>Want a quote?</h2>
-        <p>Message what you need (photos help) and we’ll take it from there.</p>
-      </div>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="contact.html">Get a Free Quote</a>
-        <a class="btn btn-outline" href="services.html">View Services</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
+<footer class="footer">
   <div class="container footer-inner">
-    <span>© Evergreen Property &amp; Garden Care</span>
-    <span>South Wales</span>
+    <div>
+      <strong>Evergreen Property &amp; Garden Care</strong>
+      <small>South Wales</small>
+      <small>Easy booking • Clear communication • Work done properly</small>
+    </div>
+    <div>
+      <small><strong>Next step:</strong> Use “Instant Estimate + Booking” to pick a slot.</small>
+      <small><a href="booking.html" style="text-decoration:underline">Go to booking</a></small>
+    </div>
   </div>
 </footer>
+
+<script>
+  // Mobile menu toggle (tiny, no dependencies)
+  const btn = document.getElementById("hamburger");
+  const drawer = document.getElementById("mobileDrawer");
+  if (btn && drawer) {
+    btn.addEventListener("click", () => {
+      const open = drawer.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+</script>
 
 </body>
 </html>
