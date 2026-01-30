@@ -1,118 +1,90 @@
-<!-- ================================
-     about.html (FULL)
-     ================================ -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About | Evergreen</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About • Evergreen Property &amp; Garden Care</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="topbar">
     <div class="container">
-      <div class="pill">South Wales • Local & reliable</div>
-      <div class="right">
-        <a href="tel:07825250141">Call: <b>07825 250141</b></a>
-        <a href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="row">
+        <div class="left">South Wales • Local &amp; reliable</div>
+        <div class="right">
+          <a class="badge" href="tel:07825250141">Call: 07825 250141</a>
+          <a class="badge" href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Evergreen home">
-        <img src="logo.png" alt="Evergreen logo"/>
-        <div class="name">
-          <strong>Evergreen</strong>
-          <span>Property & Garden Care</span>
-        </div>
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a class="active" href="about.html">About</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="booking.html">Book</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <a class="btn btn-ghost" href="contact.html">Get a quote</a>
-        <a class="btn btn-primary" href="booking.html">Book a slot</a>
-      </div>
-
-      <div class="mobile-menu">
-        <details>
-          <summary>Menu</summary>
-          <nav>
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a class="active" href="about.html">About</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="booking.html">Book</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-          <div class="actions">
-            <a class="btn btn-ghost btn-block" href="contact.html">Get a quote</a>
-            <a class="btn btn-primary btn-block" href="booking.html">Book a slot</a>
-          </div>
-        </details>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <img src="logo.png" alt="Evergreen Property & Garden Care logo">
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="page-hero">
-      <h1>About Evergreen</h1>
-      <p>A straightforward local service: clear communication, fair pricing, and work finished properly.</p>
-    </section>
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="booking.html">Booking</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <section class="section">
-      <div class="grid-3">
-        <div class="card">
-          <h3>What we’re about</h3>
-          <p>Reliable, tidy work for homeowners and landlords who want things kept on top of.</p>
+  <main>
+    <div class="container">
+
+      <div class="card">
+        <h1 style="margin-top:0;color:var(--green-dark);">About</h1>
+        <p style="color:var(--muted);margin-top:6px;">
+          Evergreen Property &amp; Garden Care provides reliable garden and property maintenance across South Wales.
+        </p>
+
+        <h2 class="section-title">How we work</h2>
+        <ul class="clean">
+          <li>Turn up when we say we will</li>
+          <li>Do the job properly</li>
+          <li>Leave it tidy</li>
+          <li>Clear communication before and after</li>
+        </ul>
+
+        <div class="notice">
+          Want a quick quote? WhatsApp a photo + postcode + what you need doing.
         </div>
-        <div class="card">
-          <h3>How we work</h3>
-          <p>Turn up on time, do the job properly, leave the place clean and presentable.</p>
-        </div>
-        <div class="card">
-          <h3>Where we work</h3>
-          <p>South Wales — mainly around CF33 and nearby areas.</p>
+
+        <div class="actions">
+          <a class="btn primary" href="booking.html">Book now</a>
+          <a class="btn" href="contact.html">Contact</a>
         </div>
       </div>
 
-      <div class="callout">
-        <div class="txt">
-          <b>Want a quick answer?</b>
-          <span>Use the contact page and we’ll get back to you fast.</span>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn-ghost" href="contact.html">Contact</a>
-          <a class="btn btn-primary" href="booking.html">Book a slot</a>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="container footer-inner">
-        <div>© <span id="y"></span> Evergreen Property &amp; Garden Care</div>
-        <div class="links">
-          <a href="services.html">Services</a>
-          <a href="booking.html">Book</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-    </footer>
+    </div>
   </main>
 
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div>© <span id="y"></span> Evergreen Property &amp; Garden Care</div>
+        <div>
+          <a href="tel:07825250141">07825 250141</a> •
+          <a href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
