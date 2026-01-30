@@ -1,118 +1,126 @@
-<!-- ================================
-     services.html (FULL)
-     ================================ -->
-<!DOCTYPE html>
-<html lang="en">
+<!-- services.html -->
+<!doctype html>
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Services | Evergreen</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="description" content="Evergreen Property & Garden Care — startup focus services across South Wales: grass cutting, hedge trimming, garden tidy-ups." />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
+  <!-- Top bar -->
   <div class="topbar">
-    <div class="container">
-      <div class="pill">South Wales • Local & reliable</div>
-      <div class="right">
-        <a href="tel:07825250141">Call: <b>07825 250141</b></a>
-        <a href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
+    <div class="container topbar__inner">
+      <div class="pill">South Wales • Local &amp; reliable</div>
+      <div class="topbar__right">
+        <a class="topbar__link" href="tel:07825250141">Call: <strong>07825 250141</strong></a>
+        <span class="sep">•</span>
+        <a class="topbar__link" href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Evergreen home">
-        <img src="logo.png" alt="Evergreen logo"/>
-        <div class="name">
-          <strong>Evergreen</strong>
-          <span>Property & Garden Care</span>
-        </div>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="./index.html" aria-label="Evergreen home">
+        <span class="brand__mark">
+          <img src="./logo.png" alt="Evergreen" />
+        </span>
+        <span class="brand__text">
+          <span class="brand__name">Evergreen</span>
+          <span class="brand__tag">Property &amp; Garden Care</span>
+        </span>
       </a>
 
       <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a class="active" href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="booking.html">Book</a>
-        <a href="contact.html">Contact</a>
+        <a class="nav__link" href="./index.html">Home</a>
+        <a class="nav__link is-active" href="./services.html">Services</a>
+        <a class="nav__link" href="./about.html">About</a>
+        <a class="nav__link" href="./gallery.html">Gallery</a>
+        <a class="nav__link" href="./booking.html">Book</a>
+        <a class="nav__link" href="./contact.html">Contact</a>
       </nav>
 
-      <div class="header-actions">
-        <a class="btn btn-ghost" href="contact.html">Get a quote</a>
-        <a class="btn btn-primary" href="booking.html">Book a slot</a>
-      </div>
-
-      <div class="mobile-menu">
-        <details>
-          <summary>Menu</summary>
-          <nav>
-            <a href="index.html">Home</a>
-            <a class="active" href="services.html">Services</a>
-            <a href="about.html">About</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="booking.html">Book</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-          <div class="actions">
-            <a class="btn btn-ghost btn-block" href="contact.html">Get a quote</a>
-            <a class="btn btn-primary btn-block" href="booking.html">Book a slot</a>
-          </div>
-        </details>
+      <div class="header__cta">
+        <a class="btn btn--ghost" href="./contact.html">Get a quote</a>
+        <a class="btn" href="./booking.html">Book a slot</a>
       </div>
     </div>
   </header>
 
-  <main class="container">
+  <main>
     <section class="page-hero">
-      <h1>Services</h1>
-      <p>Startup focus: the services we can deliver consistently, with a proper finish.</p>
+      <div class="container">
+        <div class="page-hero__card">
+          <h1>Services</h1>
+          <p class="muted">Startup focus: the services we can deliver consistently, with a proper finish.</p>
+        </div>
+      </div>
     </section>
 
     <section class="section">
-      <div class="grid-3">
-        <div class="card">
-          <h3>Grass cutting / lawn care</h3>
-          <p>One-off cuts, regular maintenance, edging, and quick tidy-up.</p>
-        </div>
-        <div class="card">
-          <h3>Hedge trimming</h3>
-          <p>Trim, shape, and remove the mess so it looks clean and controlled.</p>
-        </div>
-        <div class="card">
-          <h3>Garden tidy-ups</h3>
-          <p>Weeds, overgrowth, paths/patio tidy, general reset to make it presentable.</p>
-        </div>
-      </div>
+      <div class="container">
 
-      <div class="callout">
-        <div class="txt">
-          <b>Not sure what you need?</b>
-          <span>Send a quick message and we’ll point you in the right direction.</span>
+        <div class="grid-3">
+          <!-- 1 -->
+          <article class="service-card service-card--lawn">
+            <div class="service-card__overlay"></div>
+            <div class="service-card__content">
+              <h3>Grass cutting / lawn care</h3>
+              <p>One-off cuts, regular maintenance, edging, and quick tidy-up.</p>
+              <a class="link" href="./booking.html">Book this →</a>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="service-card service-card--hedge">
+            <div class="service-card__overlay"></div>
+            <div class="service-card__content">
+              <h3>Hedge trimming</h3>
+              <p>Trim, shape, and remove the mess so it looks clean and controlled.</p>
+              <a class="link" href="./booking.html">Book this →</a>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="service-card service-card--tidy">
+            <div class="service-card__overlay"></div>
+            <div class="service-card__content">
+              <h3>Garden tidy-ups</h3>
+              <p>Weeds, overgrowth, paths/patio tidy, general reset to make it presentable.</p>
+              <a class="link" href="./booking.html">Book this →</a>
+            </div>
+          </article>
         </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn-ghost" href="contact.html">Ask a question</a>
-          <a class="btn btn-primary" href="booking.html">Book a slot</a>
+
+        <div class="banner">
+          <div>
+            <h3 class="banner__title">Not sure what you need?</h3>
+            <p class="banner__text">Send a quick message and we’ll point you in the right direction.</p>
+          </div>
+          <div class="banner__actions">
+            <a class="btn btn--ghost" href="./contact.html">Ask a question</a>
+            <a class="btn" href="./booking.html">Book a slot</a>
+          </div>
         </div>
+
       </div>
     </section>
-
-    <footer>
-      <div class="container footer-inner">
-        <div>© <span id="y"></span> Evergreen Property &amp; Garden Care</div>
-        <div class="links">
-          <a href="index.html">Home</a>
-          <a href="booking.html">Book</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-    </footer>
   </main>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© 2026 Evergreen Property &amp; Garden Care</div>
+      <div class="footer__links">
+        <a href="./index.html">Home</a>
+        <a href="./booking.html">Book</a>
+        <a href="./contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
