@@ -1,16 +1,15 @@
 /* =========================
    Evergreen Property & Garden Care
-   More colour + more personality (still clean)
+   Clean + colourful (NO blobs / NO weird background shapes)
    ========================= */
 
 :root{
   --green:#0f4d2b;
   --green-dark:#0b3a20;
   --accent:#1b7a41;
-  --accent-2:#2aa86b;
 
-  --bg:#f6fbf7;
-  --soft:#eef7f0;
+  --bg:#f4faf6;
+  --soft:#eaf6ee;
   --card:#ffffff;
 
   --text:#102015;
@@ -34,14 +33,6 @@ html, body{
   line-height:1.45;
 }
 
-/* subtle background texture */
-body{
-  background-image:
-    radial-gradient(circle at 15% 10%, rgba(27,122,65,.08) 0 160px, transparent 160px),
-    radial-gradient(circle at 85% 0%, rgba(42,168,107,.08) 0 220px, transparent 220px),
-    radial-gradient(circle at 80% 90%, rgba(15,77,43,.06) 0 260px, transparent 260px);
-}
-
 a{
   color: var(--accent);
   text-decoration: none;
@@ -55,7 +46,7 @@ a:hover{ text-decoration: underline; }
 
 /* Top bar */
 .topbar{
-  background: linear-gradient(90deg, rgba(15,77,43,.10), rgba(42,168,107,.10));
+  background: var(--soft);
   border-bottom: 1px solid var(--border);
   padding: 10px 0;
   font-size: 14px;
@@ -72,7 +63,6 @@ a:hover{ text-decoration: underline; }
 .topbar .left{
   font-weight: 800;
   color: var(--green-dark);
-  letter-spacing: .2px;
 }
 
 .badge{
@@ -80,14 +70,13 @@ a:hover{ text-decoration: underline; }
   padding: 7px 12px;
   border-radius: 999px;
   border: 1px solid rgba(15,77,43,.18);
-  background: rgba(255,255,255,.85);
+  background: #fff;
   font-weight: 800;
   color: var(--green);
-  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
 }
 .badge:hover{
   text-decoration:none;
-  background:#fff;
   border-color: rgba(15,77,43,.28);
 }
 
@@ -103,23 +92,19 @@ header{
 }
 
 .brand img{
-  width: 600px;       /* strong brand presence */
+  width: 600px;       /* big and bold */
   max-width: 96vw;
   height: auto;
-  max-height: 190px;  /* prevents huge vertical space */
+  max-height: 190px;  /* stops it eating the fold */
   display:block;
   filter: drop-shadow(0 10px 18px rgba(0,0,0,.10));
 }
 
-/* Navigation */
+/* Navigation (simple, NOT sticky) */
 nav{
-  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.85));
+  background: #fff;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  backdrop-filter: blur(6px);
 }
 
 .nav-inner{
@@ -136,14 +121,12 @@ nav a{
   padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid transparent;
-  transition: transform .08s ease, background .15s ease, border-color .15s ease;
 }
 
 nav a:hover{
   text-decoration:none;
   background: rgba(27,122,65,.10);
   border-color: rgba(27,122,65,.18);
-  transform: translateY(-1px);
 }
 
 /* Main */
@@ -162,7 +145,7 @@ main{
   overflow: hidden;
 }
 
-/* subtle accent stripe on cards */
+/* subtle brand stripe (keeps colour, not tacky) */
 .card::before{
   content:"";
   position:absolute;
@@ -170,8 +153,8 @@ main{
   top:0;
   bottom:0;
   width: 6px;
-  background: linear-gradient(180deg, var(--accent), var(--accent-2));
-  opacity: .85;
+  background: var(--accent);
+  opacity: .9;
 }
 
 /* Hero */
@@ -184,9 +167,7 @@ main{
 }
 
 @media (max-width: 900px){
-  .hero{
-    grid-template-columns: 1fr;
-  }
+  .hero{ grid-template-columns: 1fr; }
 }
 
 .hero h1{
@@ -214,21 +195,19 @@ main{
   border-radius: 14px;
   border:1px solid rgba(15,77,43,.18);
   font-weight: 900;
-  background: rgba(255,255,255,.92);
+  background: #fff;
   color: var(--green-dark);
   box-shadow: 0 10px 20px rgba(0,0,0,.06);
-  transition: transform .08s ease, filter .15s ease;
 }
 
 .btn:hover{
   text-decoration:none;
-  transform: translateY(-1px);
   filter: brightness(1.02);
 }
 
 .btn.primary{
-  background: linear-gradient(135deg, var(--green), var(--accent-2));
-  border-color: rgba(15,77,43,.25);
+  background: var(--green);
+  border-color: var(--green);
   color:#fff;
   box-shadow: 0 14px 26px rgba(15,77,43,.22);
 }
@@ -238,8 +217,8 @@ main{
   margin-top:10px;
   padding: 12px 12px;
   border-radius: 14px;
-  background: linear-gradient(135deg, rgba(15,77,43,.08), rgba(42,168,107,.10));
-  border: 1px dashed rgba(15,77,43,.25);
+  background: rgba(15,77,43,.06);
+  border: 1px dashed rgba(15,77,43,.22);
   font-weight: 900;
   color: var(--green-dark);
 }
@@ -270,7 +249,7 @@ main{
 /* Footer */
 footer{
   border-top: 1px solid rgba(15,77,43,.18);
-  background: linear-gradient(180deg, rgba(15,77,43,.08), rgba(15,77,43,.03));
+  background: #fff;
   padding: 16px 0;
   font-size: 14px;
   color: var(--green-dark);
