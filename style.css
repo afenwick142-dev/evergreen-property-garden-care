@@ -1,6 +1,6 @@
 /* ================================
    Evergreen — style.css (FULL)
-   Clean, modern, competitor-level layout
+   Logo POP + header polish update
    ================================ */
 
 :root{
@@ -81,7 +81,7 @@ header.site-header{
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255,255,255,.82);
+  background: rgba(255,255,255,.86);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -94,17 +94,32 @@ header.site-header{
   gap: 16px;
 }
 
+/* ================================
+   LOGO: bigger + “badge” treatment
+   Works with your existing <img src="logo.png">
+   ================================ */
 .brand{
   display:flex;
   align-items:center;
   gap: 12px;
-  min-width: 220px;
+  min-width: 260px;
 }
 .brand img{
+  /* Bigger logo */
+  height: 48px;          /* was 34px */
   width: auto;
-  height: 34px;      /* FIX: logo becomes a proper header logo */
   object-fit: contain;
+
+  /* Make it pop like a brand badge */
+  padding: 10px 12px;
+  background: rgba(255,255,255,.98);
+  border-radius: 14px;
+  border: 1px solid rgba(15,27,21,.14);
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.10),
+    0 0 0 4px rgba(19,82,55,.08);
 }
+
 .brand .name{
   display:flex;
   flex-direction: column;
@@ -440,16 +455,14 @@ footer{
   .header-actions{ display:none; }
   .nav{ display:none; }
 
-  .mobile-toggle{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    border-radius: 999px;
-    padding: 10px 12px;
-    border: 1px solid rgba(15,27,21,.14);
-    background: rgba(255,255,255,.86);
-    font-weight: 900;
-    cursor: pointer;
+  /* Mobile: slightly smaller badge so it doesn’t dominate */
+  .brand{
+    min-width: 0;
+  }
+  .brand img{
+    height: 44px;
+    padding: 9px 11px;
+    border-radius: 14px;
   }
 
   .mobile-menu{
