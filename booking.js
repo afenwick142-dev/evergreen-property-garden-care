@@ -1,23 +1,17 @@
 // =====================================
-// booking.js  (Website)
-// REAL AVAILABILITY + OWNER ALERT (Option 3)
+// booking.js (FULL FILE)
+// Website: estimate + real availability + owner alert links via API
 // =====================================
 
-// 🔗 Google Apps Script Web App (LIVE)
 const API_URL =
   "https://script.google.com/macros/s/AKfycbzpJ7Hl7pm1MlD4LJVwSfpmfNJ9vkjip0xI4puy8s_3eerVkeK1nI5JBj-p4rbv2eI/exec";
 
-// 📱 WhatsApp Business number (UK → international format)
 const BUSINESS_WA_NUMBER = "447825250141";
 
-// -------------------------------------
-// Helpers
-// -------------------------------------
 const $ = (id) => document.getElementById(id);
 
 function buildWhatsAppLink(text) {
-  const encoded = encodeURIComponent(text);
-  return `https://wa.me/${BUSINESS_WA_NUMBER}?text=${encoded}`;
+  return `https://wa.me/${BUSINESS_WA_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 
 function showStatus(msg, ok = false) {
@@ -27,9 +21,6 @@ function showStatus(msg, ok = false) {
   el.style.color = ok ? "#1b7f3a" : "#b00020";
 }
 
-// -------------------------------------
-// REAL availability: load slots from API
-// -------------------------------------
 async function loadAvailableTimes(date) {
   const timeSelect = $("time");
   if (!timeSelect) return;
@@ -69,9 +60,6 @@ async function loadAvailableTimes(date) {
   }
 }
 
-// -------------------------------------
-// Instant Estimator (optional on your page)
-// -------------------------------------
 const PRICING = {
   lawn: { small: [25, 35], medium: [35, 55], large: [55, 80] },
   hedge: { small: [30, 50], medium: [50, 85], large: [85, 140] },
@@ -110,9 +98,6 @@ function calculateEstimate() {
   if (noteEl) noteEl.textContent = "Online estimate — final price may change if access/condition differs significantly.";
 }
 
-// -------------------------------------
-// Submit booking (server re-checks slot)
-// -------------------------------------
 async function submitBooking() {
   const date = $("date")?.value;
   const time = $("time")?.value;
@@ -126,9 +111,7 @@ async function submitBooking() {
     return;
   }
 
-  if ($("jobType") && !lastEstimateText) {
-    calculateEstimate();
-  }
+  if ($("jobType") && !lastEstimateText) calculateEstimate();
 
   const payload = {
     date,
@@ -175,7 +158,6 @@ async function submitBooking() {
 
     if (lastEstimateText) msgLines.push(`• Estimate: ${lastEstimateText.split(" (")[0]}`);
     if (notes) msgLines.push(`• Notes: ${notes}`);
-
     msgLines.push(``, `Booking ID: ${bookingId}`);
 
     const waLink = buildWhatsAppLink(msgLines.join("\n"));
@@ -186,33 +168,13 @@ async function submitBooking() {
     if (successBox) successBox.hidden = false;
     if (waBtn) waBtn.href = waLink;
 
-    // Optional owner links (if these elements exist in your HTML)
-    const ownerBox = $("ownerBox");
-    const ownerLink = $("ownerLink");
-    if (ownerBox && ownerLink && data.whatsappOwner) {
-      ownerBox.style.display = "block";
-      ownerLink.href = data.whatsappOwner;
-      ownerLink.textContent = "Send owner alert on WhatsApp";
-    }
-
-    // Optional message-customer link (if mobile is usable)
-    const msgCustomerLink = $("msgCustomerLink");
-    if (msgCustomerLink && data.whatsappToCustomer) {
-      msgCustomerLink.href = data.whatsappToCustomer;
-      msgCustomerLink.style.display = "inline-block";
-    }
-
     await loadAvailableTimes(date);
-
   } catch (err) {
     console.error(err);
     showStatus("Could not connect to booking service.");
   }
 }
 
-// -------------------------------------
-// Init
-// -------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   $("date")?.addEventListener("change", (e) => {
     const date = e.target.value;
