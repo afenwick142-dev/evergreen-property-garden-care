@@ -1,6 +1,7 @@
 /* =========================
    Evergreen Property & Garden Care
-   Modern layout – tightened vertical spacing
+   Modern layout – reduced above-the-fold height
+   (keeps logo wide, limits logo HEIGHT)
    ========================= */
 
 :root{
@@ -25,7 +26,7 @@ html, body{
   background:var(--bg);
   color:var(--text);
   font-family: Arial, Helvetica, sans-serif;
-  line-height:1.5;
+  line-height:1.45;
 }
 
 a{
@@ -43,7 +44,7 @@ a:hover{ text-decoration: underline; }
 .topbar{
   background: var(--soft);
   border-bottom: 1px solid var(--border);
-  padding: 8px 0; /* ↓ tighter */
+  padding: 6px 0; /* tighter */
   font-size: 14px;
 }
 
@@ -72,7 +73,7 @@ a:hover{ text-decoration: underline; }
 
 /* Header / logo */
 header{
-  padding: 18px 0 8px 0; /* 🔥 BIG REDUCTION */
+  padding: 10px 0 6px 0; /* big reduction */
 }
 
 .brand{
@@ -82,9 +83,11 @@ header{
 }
 
 .brand img{
-  width: 520px;
-  max-width: 95vw;
+  /* Keep it wide, but STOP it being tall */
+  width: 560px;         /* wide (strong branding) */
+  max-width: 96vw;
   height: auto;
+  max-height: 180px;    /* 🔥 THIS is what fixes the fold */
   display:block;
 }
 
@@ -99,7 +102,7 @@ nav{
   display:flex;
   justify-content:center;
   gap: 18px;
-  padding: 10px 0; /* ↓ tighter */
+  padding: 8px 0; /* tighter */
   flex-wrap:wrap;
 }
 
@@ -116,7 +119,7 @@ nav a:hover{
 
 /* Main */
 main{
-  padding: 18px 0 40px 0; /* 🔥 pulls hero up */
+  padding: 10px 0 34px 0; /* pulls hero up */
 }
 
 .card{
@@ -124,14 +127,14 @@ main{
   border-radius: var(--radius);
   border:1px solid var(--border);
   box-shadow: var(--shadow);
-  padding: 20px;
+  padding: 16px; /* slightly tighter */
 }
 
 /* Hero */
 .hero{
   display:grid;
   grid-template-columns: 1.2fr .8fr;
-  gap: 18px;
+  gap: 14px;
   align-items:center;
 }
 
@@ -143,13 +146,13 @@ main{
 
 .hero h1{
   margin:0 0 8px 0;
-  font-size: 32px; /* slightly tighter */
+  font-size: 30px;
   line-height:1.15;
   color: var(--green-dark);
 }
 
 .hero p{
-  margin:0 0 14px 0;
+  margin:0 0 12px 0;
   color: var(--muted);
 }
 
@@ -175,7 +178,7 @@ main{
 }
 
 .notice{
-  margin-top:10px; /* ↓ tighter */
+  margin-top:10px;
   padding: 10px 12px;
   border-radius: 12px;
   background: var(--soft);
@@ -193,7 +196,7 @@ main{
 
 .figure img{
   width:100%;
-  height:240px; /* 🔥 slightly shorter so it fits above fold */
+  height:220px; /* slightly shorter, helps above fold */
   object-fit:cover;
   display:block;
 }
@@ -208,7 +211,7 @@ main{
 /* Footer */
 footer{
   border-top:1px solid var(--border);
-  padding:14px 0;
+  padding:12px 0;
   font-size:14px;
   color: var(--muted);
 }
