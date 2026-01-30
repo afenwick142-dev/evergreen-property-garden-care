@@ -1,106 +1,118 @@
 <!-- ================================
-     about.html (FULL FILE)
-================================== -->
+     about.html (FULL)
+     ================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About | Evergreen</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <div class="brand">
-      <a href="index.html" aria-label="Evergreen home">
-        <img src="logo.png" alt="Evergreen logo" />
-      </a>
-      <div class="brand-text" aria-hidden="true">
-        <strong>Evergreen</strong>
-        <span>Property &amp; Garden Care</span>
+  <div class="topbar">
+    <div class="container">
+      <div class="pill">South Wales • Local & reliable</div>
+      <div class="right">
+        <a href="tel:07825250141">Call: <b>07825 250141</b></a>
+        <a href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
-
-    <nav class="nav" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html" class="active">About</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="booking.html">Book</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-    <div class="nav-cta">
-      <a class="btn btn-primary btn-wide" href="booking.html">Book a Slot</a>
-      <a class="btn btn-ghost" href="contact.html">Quick Message</a>
-    </div>
-
-    <button class="hamburger" id="hamburger" type="button" aria-expanded="false" aria-controls="mobileDrawer">Menu</button>
   </div>
 
-  <div class="container mobile-drawer" id="mobileDrawer">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="about.html" class="active">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="booking.html">Book</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</header>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Evergreen home">
+        <img src="logo.png" alt="Evergreen logo"/>
+        <div class="name">
+          <strong>Evergreen</strong>
+          <span>Property & Garden Care</span>
+        </div>
+      </a>
 
-<main class="container page">
-  <h1 class="page-title">About Evergreen</h1>
-  <p class="page-sub">
-    A straightforward local service: clear communication, fair pricing, and work finished properly.
-  </p>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a class="active" href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="booking.html">Book</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-  <div class="cards">
-    <div class="card">
-      <h3>What we’re about</h3>
-      <p>Helping households and landlords keep outdoor spaces tidy, safe and presentable.</p>
+      <div class="header-actions">
+        <a class="btn btn-ghost" href="contact.html">Get a quote</a>
+        <a class="btn btn-primary" href="booking.html">Book a slot</a>
+      </div>
+
+      <div class="mobile-menu">
+        <details>
+          <summary>Menu</summary>
+          <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a class="active" href="about.html">About</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="booking.html">Book</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <div class="actions">
+            <a class="btn btn-ghost btn-block" href="contact.html">Get a quote</a>
+            <a class="btn btn-primary btn-block" href="booking.html">Book a slot</a>
+          </div>
+        </details>
+      </div>
     </div>
-    <div class="card">
-      <h3>How we work</h3>
-      <p>Book online → we confirm via WhatsApp → we turn up and crack on.</p>
-    </div>
-    <div class="card">
-      <h3>Where we work</h3>
-      <p>South Wales (starting local and expanding as capacity grows).</p>
-    </div>
-  </div>
+  </header>
 
-  <div class="hero-actions" style="margin-top:18px">
-    <a class="btn btn-solid-green btn-wide" href="booking.html">Instant Estimate + Booking</a>
-    <a class="btn btn-outline btn-wide" href="contact.html">Contact</a>
-  </div>
-</main>
+  <main class="container">
+    <section class="page-hero">
+      <h1>About Evergreen</h1>
+      <p>A straightforward local service: clear communication, fair pricing, and work finished properly.</p>
+    </section>
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <div>
-      <strong>Evergreen Property &amp; Garden Care</strong>
-      <small>South Wales</small>
-      <small>Easy booking • Clear communication • Work done properly</small>
-    </div>
-    <div>
-      <small><a href="booking.html" style="text-decoration:underline">Book a slot</a></small>
-      <small><a href="services.html" style="text-decoration:underline">Services</a></small>
-    </div>
-  </div>
-</footer>
+    <section class="section">
+      <div class="grid-3">
+        <div class="card">
+          <h3>What we’re about</h3>
+          <p>Reliable, tidy work for homeowners and landlords who want things kept on top of.</p>
+        </div>
+        <div class="card">
+          <h3>How we work</h3>
+          <p>Turn up on time, do the job properly, leave the place clean and presentable.</p>
+        </div>
+        <div class="card">
+          <h3>Where we work</h3>
+          <p>South Wales — mainly around CF33 and nearby areas.</p>
+        </div>
+      </div>
 
-<script>
-  const btn = document.getElementById("hamburger");
-  const drawer = document.getElementById("mobileDrawer");
-  if (btn && drawer) {
-    btn.addEventListener("click", () => {
-      const open = drawer.classList.toggle("open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-  }
-</script>
+      <div class="callout">
+        <div class="txt">
+          <b>Want a quick answer?</b>
+          <span>Use the contact page and we’ll get back to you fast.</span>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-ghost" href="contact.html">Contact</a>
+          <a class="btn btn-primary" href="booking.html">Book a slot</a>
+        </div>
+      </div>
+    </section>
 
+    <footer>
+      <div class="container footer-inner">
+        <div>© <span id="y"></span> Evergreen Property &amp; Garden Care</div>
+        <div class="links">
+          <a href="services.html">Services</a>
+          <a href="booking.html">Book</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
