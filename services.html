@@ -1,27 +1,123 @@
+<!-- ================================
+     services.html (FULL FILE)
+================================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Services | Evergreen Property & Garden Care</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Services | Evergreen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header class="container">
-  <h1>Our Services</h1>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">
+      <a href="index.html" aria-label="Evergreen home">
+        <img src="logo.png" alt="Evergreen logo" />
+      </a>
+      <div class="brand-text" aria-hidden="true">
+        <strong>Evergreen</strong>
+        <span>Property &amp; Garden Care</span>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="about.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="booking.html">Book</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-wide" href="booking.html">Book a Slot</a>
+      <a class="btn btn-ghost" href="contact.html">Quick Message</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" type="button" aria-expanded="false" aria-controls="mobileDrawer">Menu</button>
+  </div>
+
+  <div class="container mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="booking.html">Book</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </header>
 
-<section class="container">
-  <p>We provide reliable garden and property maintenance across South Wales.</p>
-  <ul>
-    <li>Grass cutting & lawn care</li>
-    <li>Hedge trimming</li>
-    <li>Weeding & border maintenance</li>
-    <li>Garden tidy-ups</li>
-    <li>Property clear-outs</li>
-    <li>General outdoor maintenance</li>
-  </ul>
-</section>
+<main class="container page">
+  <h1 class="page-title">Services</h1>
+  <p class="page-sub">
+    Startup focus: the services we can deliver consistently, with a proper finish.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Grass cutting / lawn care</h3>
+      <p>Front, back or both. One-off cuts or regular upkeep.</p>
+    </div>
+    <div class="card">
+      <h3>Hedge trimming</h3>
+      <p>Neatening and shaping — tidy finish, cuttings left clean.</p>
+    </div>
+    <div class="card">
+      <h3>Garden tidy-ups</h3>
+      <p>Overgrowth, borders, weeding, general reset to get it presentable.</p>
+    </div>
+  </div>
+
+  <hr class="sep" />
+
+  <div class="cards">
+    <div class="card">
+      <h3>Seasonal clear-outs</h3>
+      <p>Spring / autumn resets. We’ll confirm what’s included before we start.</p>
+    </div>
+    <div class="card">
+      <h3>General outdoor maintenance</h3>
+      <p>Small recurring jobs that keep things looking sharp.</p>
+    </div>
+    <div class="card">
+      <h3>Want a quick price?</h3>
+      <p>Use the booking page for an instant estimate, then pick a time slot.</p>
+    </div>
+  </div>
+
+  <div class="hero-actions" style="margin-top:18px">
+    <a class="btn btn-solid-green btn-wide" href="booking.html">Instant Estimate + Booking</a>
+    <a class="btn btn-outline btn-wide" href="contact.html">Ask a question</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <strong>Evergreen Property &amp; Garden Care</strong>
+      <small>South Wales</small>
+      <small>Easy booking • Clear communication • Work done properly</small>
+    </div>
+    <div>
+      <small><a href="booking.html" style="text-decoration:underline">Book a slot</a></small>
+      <small><a href="contact.html" style="text-decoration:underline">Contact</a></small>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById("hamburger");
+  const drawer = document.getElementById("mobileDrawer");
+  if (btn && drawer) {
+    btn.addEventListener("click", () => {
+      const open = drawer.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+</script>
 
 </body>
 </html>
