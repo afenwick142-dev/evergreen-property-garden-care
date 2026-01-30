@@ -1,6 +1,6 @@
 /* =========================
    Evergreen Property & Garden Care
-   Clean, stable styling (prevents image/layout blowups)
+   Modern layout – controlled & stable
    ========================= */
 
 :root{
@@ -39,6 +39,7 @@ a:hover{ text-decoration: underline; }
   margin: 0 auto;
 }
 
+/* Top bar */
 .topbar{
   background: var(--soft);
   border-bottom: 1px solid var(--border);
@@ -48,142 +49,124 @@ a:hover{ text-decoration: underline; }
 
 .topbar .row{
   display:flex;
-  gap:12px;
   align-items:center;
   justify-content: space-between;
+  gap:12px;
   flex-wrap:wrap;
 }
 
 .topbar .left{
-  color: var(--muted);
   font-weight: 600;
-}
-
-.topbar .right{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  align-items:center;
+  color: var(--muted);
 }
 
 .badge{
   display:inline-block;
-  padding: 6px 10px;
-  border: 1px solid var(--border);
+  padding: 6px 12px;
   border-radius: 999px;
-  background: #fff;
-  font-weight: 700;
+  border: 1px solid var(--border);
+  background:#fff;
+  font-weight:700;
   color: var(--green);
 }
 
+/* Header / logo */
 header{
-  padding: 18px 0 8px 0;
+  padding: 26px 0 18px 0;
 }
 
 .brand{
   display:flex;
+  justify-content:center;
   align-items:center;
-  justify-content: center;
-  gap:16px;
-  flex-wrap:wrap;
-  text-align:center;
 }
 
 .brand img{
-  /* IMPORTANT: prevents huge logo blowups */
-  width: 320px;
-  max-width: 85vw;
+  /* 🔥 LOGO SIZE INCREASED HERE */
+  width: 520px;
+  max-width: 95vw;
   height: auto;
   display:block;
-  margin: 0 auto;
 }
 
-.brand .title{
-  display:none; /* logo carries branding; keep simple */
-}
-
+/* Navigation */
 nav{
-  margin-top: 14px;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  background: #fff;
+  background:#fff;
 }
 
-nav .nav-inner{
+.nav-inner{
   display:flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 10px 0;
+  justify-content:center;
+  gap: 18px;
+  padding: 14px 0;
+  flex-wrap:wrap;
 }
 
 nav a{
-  display:inline-block;
-  padding: 8px 12px;
-  border-radius: 999px;
+  font-weight:700;
   color: var(--green-dark);
-  font-weight: 700;
-  border: 1px solid transparent;
+  padding: 6px 8px;
 }
 
 nav a:hover{
-  background: var(--soft);
-  border-color: var(--border);
   text-decoration:none;
+  color: var(--accent);
 }
 
+/* Main */
 main{
-  padding: 26px 0 40px 0;
+  padding: 32px 0 44px 0;
 }
 
 .card{
   background:#fff;
-  border: 1px solid var(--border);
   border-radius: var(--radius);
+  border:1px solid var(--border);
   box-shadow: var(--shadow);
-  padding: 18px;
+  padding: 22px;
 }
 
+/* Hero */
 .hero{
   display:grid;
   grid-template-columns: 1.2fr .8fr;
-  gap: 16px;
-  align-items: center;
+  gap: 22px;
+  align-items:center;
 }
 
-@media (max-width: 850px){
-  .hero{ grid-template-columns: 1fr; }
+@media (max-width: 900px){
+  .hero{
+    grid-template-columns: 1fr;
+  }
 }
 
 .hero h1{
-  margin: 0 0 8px 0;
+  margin:0 0 10px 0;
   font-size: 34px;
-  line-height: 1.15;
+  line-height:1.15;
   color: var(--green-dark);
 }
 
 .hero p{
-  margin: 0 0 14px 0;
+  margin:0 0 16px 0;
   color: var(--muted);
-  font-size: 16px;
 }
 
 .actions{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  margin-top: 10px;
 }
 
 .btn{
-  display:inline-block;
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-radius: 12px;
-  font-weight: 800;
-  border: 1px solid var(--border);
-  background: #fff;
+  border:1px solid var(--border);
+  font-weight:800;
+  background:#fff;
   color: var(--green-dark);
-  text-decoration:none;
 }
 
 .btn.primary{
@@ -192,133 +175,48 @@ main{
   color:#fff;
 }
 
-.btn:hover{
-  text-decoration:none;
-  filter: brightness(0.98);
-}
-
-.grid-3{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 18px;
-}
-
-@media (max-width: 900px){
-  .grid-3{ grid-template-columns: 1fr; }
-}
-
-.tile{
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: #fff;
-  padding: 16px;
-}
-
-.tile h3{
-  margin: 0 0 6px 0;
-  color: var(--green-dark);
-}
-
-.tile p{
-  margin:0;
+.notice{
+  margin-top:14px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--soft);
+  border:1px dashed var(--border);
+  font-weight:700;
   color: var(--muted);
 }
 
-.section-title{
-  margin: 22px 0 10px 0;
-  font-size: 22px;
-  color: var(--green-dark);
-}
-
-ul.clean{
-  margin: 10px 0 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-}
-
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-@media (max-width: 950px){
-  .gallery{ grid-template-columns: 1fr; }
-}
-
+/* Images – scoped only */
 .figure{
-  border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow:hidden;
-  background:#fff;
+  border:1px solid var(--border);
 }
 
 .figure img{
-  /* IMPORTANT: only images in gallery/cards scale,
-     no global img rule that breaks header/logo */
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
+  width:100%;
+  height:260px;
+  object-fit:cover;
   display:block;
 }
 
 .figure .cap{
   padding: 10px 12px;
+  font-size:14px;
+  font-weight:700;
   color: var(--muted);
-  font-weight: 700;
-  font-size: 14px;
 }
 
-.form{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-@media (max-width: 850px){
-  .form{ grid-template-columns: 1fr; }
-}
-
-label{
-  font-weight: 800;
-  color: var(--green-dark);
-  font-size: 14px;
-}
-
-input, select, textarea{
-  width: 100%;
-  margin-top: 6px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  outline: none;
-  font-size: 14px;
-}
-
-textarea{ min-height: 120px; resize: vertical; }
-
-.notice{
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 12px;
-  background: var(--soft);
-  border: 1px dashed var(--border);
-  color: var(--muted);
-  font-weight: 700;
-}
-
+/* Footer */
 footer{
-  border-top: 1px solid var(--border);
-  background: #fff;
-  padding: 16px 0;
+  border-top:1px solid var(--border);
+  padding:16px 0;
+  font-size:14px;
   color: var(--muted);
-  font-size: 14px;
 }
 
 footer .row{
   display:flex;
-  justify-content: space-between;
-  gap: 12px;
+  justify-content:space-between;
+  gap:12px;
   flex-wrap:wrap;
 }
