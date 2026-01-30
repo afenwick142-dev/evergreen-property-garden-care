@@ -1,164 +1,126 @@
-<!-- ================================
-     booking.html (FULL)
-     Keep your existing booking.js hookup
-     ================================ -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Book a Job | Evergreen</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Booking • Evergreen Property &amp; Garden Care</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="topbar">
     <div class="container">
-      <div class="pill">South Wales • Local & reliable</div>
-      <div class="right">
-        <a href="tel:07825250141">Call: <b>07825 250141</b></a>
-        <a href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
+      <div class="row">
+        <div class="left">South Wales • Local &amp; reliable</div>
+        <div class="right">
+          <a class="badge" href="tel:07825250141">Call: 07825 250141</a>
+          <a class="badge" href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Evergreen home">
-        <img src="logo.png" alt="Evergreen logo"/>
-        <div class="name">
-          <strong>Evergreen</strong>
-          <span>Property & Garden Care</span>
-        </div>
-      </a>
-
-      <nav class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="about.html">About</a>
-        <a href="gallery.html">Gallery</a>
-        <a class="active" href="booking.html">Book</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-
-      <div class="header-actions">
-        <a class="btn btn-ghost" href="contact.html">Ask a question</a>
-        <a class="btn btn-primary" href="booking.html">Book a slot</a>
-      </div>
-
-      <div class="mobile-menu">
-        <details>
-          <summary>Menu</summary>
-          <nav>
-            <a href="index.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="about.html">About</a>
-            <a href="gallery.html">Gallery</a>
-            <a class="active" href="booking.html">Book</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-          <div class="actions">
-            <a class="btn btn-ghost btn-block" href="contact.html">Ask a question</a>
-            <a class="btn btn-primary btn-block" href="booking.html">Book a slot</a>
-          </div>
-        </details>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <img src="logo.png" alt="Evergreen Property & Garden Care logo">
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="page-hero">
-      <h1>Instant Estimate + Booking</h1>
-      <p>No hassle. Get a quick price range, then pick an available slot.</p>
-    </section>
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="booking.html">Booking</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <section class="section">
+  <main>
+    <div class="container">
+
       <div class="card">
-        <h3 style="margin:0 0 12px;">Book a slot</h3>
+        <h1 style="margin-top:0;color:var(--green-dark);">Booking</h1>
+        <p style="color:var(--muted);margin-top:6px;">
+          Fill this in and we’ll come back to you. For the fastest response, WhatsApp us a photo.
+        </p>
 
-        <div class="form-grid">
-          <div class="field">
-            <span>Select date</span>
-            <input id="date" type="date" />
-          </div>
-          <div class="field">
-            <span>Available times</span>
-            <select id="time">
-              <option value="">Pick a date first</option>
-            </select>
+        <form id="bookingForm">
+          <div class="form">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" required />
+            </div>
+
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" required />
+            </div>
+
+            <div>
+              <label for="postcode">Postcode</label>
+              <input id="postcode" name="postcode" required />
+            </div>
+
+            <div>
+              <label for="service">Service</label>
+              <select id="service" name="service" required>
+                <option value="">Select…</option>
+                <option>Grass cutting</option>
+                <option>Hedge trimming</option>
+                <option>Garden tidy-up</option>
+                <option>Regular maintenance</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="date">Preferred date</label>
+              <input id="date" name="date" placeholder="e.g. Saturday morning" />
+            </div>
+
+            <div>
+              <label for="access">Access notes</label>
+              <input id="access" name="access" placeholder="e.g. side gate, dogs, parking" />
+            </div>
+
+            <div style="grid-column:1/-1;">
+              <label for="details">Details</label>
+              <textarea id="details" name="details" placeholder="Tell us what needs doing..."></textarea>
+            </div>
           </div>
 
-          <div class="field">
-            <span>Your name</span>
-            <input id="name" type="text" placeholder="e.g. Anthony" />
-          </div>
-          <div class="field">
-            <span>Mobile (WhatsApp)</span>
-            <input id="mobile" type="tel" placeholder="e.g. 07..." />
+          <div class="actions" style="margin-top:14px;">
+            <button class="btn primary" type="submit">Send booking request</button>
+            <a class="btn" href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp instead</a>
           </div>
 
-          <div class="field">
-            <span>Postcode</span>
-            <input id="postcode" type="text" placeholder="e.g. CF33..." />
-          </div>
-          <div class="field">
-            <span>Job type</span>
-            <select id="jobType">
-              <option value="Grass cutting / lawn care">Grass cutting / lawn care</option>
-              <option value="Hedge trimming">Hedge trimming</option>
-              <option value="Garden tidy-up">Garden tidy-up</option>
-              <option value="General outdoor maintenance">General outdoor maintenance</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <span>Estimate (optional)</span>
-            <select id="estimate">
-              <option value="">—</option>
-              <option value="Small job (up to 1 hour)">Small job (up to 1 hour)</option>
-              <option value="Medium job (1–2 hours)">Medium job (1–2 hours)</option>
-              <option value="Larger job (2–3 hours)">Larger job (2–3 hours)</option>
-            </select>
-          </div>
-
-          <div class="field" style="grid-column: 1 / -1;">
-            <span>Notes (optional)</span>
-            <textarea id="notes" placeholder="e.g. front + back garden, side access, parking issues"></textarea>
-          </div>
-        </div>
-
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn btn-primary" id="bookBtn" type="button">Book this slot</button>
-          <a class="btn btn-ghost" href="contact.html">Not sure? Ask first</a>
-        </div>
-
-        <div id="status" class="notice" style="display:none;"></div>
-
-        <div id="success" class="success" hidden>
-          <h3 style="margin:0 0 6px;">Booked ✅</h3>
-          <p style="margin:0 0 10px;">Your booking has been logged.</p>
-          <a id="waLink" class="btn btn-ghost btn-block" href="#" target="_blank" rel="noopener">Confirm on WhatsApp</a>
-          <div style="margin-top:10px; color:rgba(15,27,21,.72); font-size:13px;">
-            If you prefer, you can just turn up at your booked time — WhatsApp just helps confirm details/photos.
-          </div>
-        </div>
+          <div id="status" class="notice" style="display:none;"></div>
+        </form>
       </div>
-    </section>
 
-    <footer>
-      <div class="container footer-inner">
-        <div>© <span id="y"></span> Evergreen Property &amp; Garden Care</div>
-        <div class="links">
-          <a href="services.html">Services</a>
-          <a href="contact.html">Contact</a>
-          <a href="index.html">Home</a>
-        </div>
-      </div>
-    </footer>
+    </div>
   </main>
 
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div>© <span id="y"></span> Evergreen Property &amp; Garden Care</div>
+        <div>
+          <a href="tel:07825250141">07825 250141</a> •
+          <a href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
   <script src="booking.js"></script>
 </body>
