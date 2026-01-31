@@ -51,7 +51,7 @@
       <section class="section">
         <h2>Estimate builder</h2>
         <p class="sub">
-          We don’t list fixed prices because every garden is different (size, condition, access, and waste).
+          We don’t advertise fixed prices because every job differs (size, condition, access, and waste).
           Use this tool for a <strong>quick estimate range</strong> — then we’ll confirm a proper quote after photos.
         </p>
       </section>
@@ -59,6 +59,7 @@
       <!-- ESTIMATOR -->
       <section class="card" style="padding:16px;">
         <div style="padding-left:10px;">
+
           <div class="kicker">Pick what you need • Get an instant estimate range • Bundle &amp; save</div>
 
           <div class="proof" style="margin-top:14px;">
@@ -67,14 +68,14 @@
               <span>Select 2+ services in the same visit and we apply a discount automatically (better value, more efficient visit).</span>
             </div>
             <div class="mini">
-              <strong>Waste removal</strong>
-              <span>Green waste removal can be added. Final price depends on volume and whether disposal is required.</span>
+              <strong>Final quote</strong>
+              <span>Estimate is a guide. Final quote confirmed after photos + postcode + access check.</span>
             </div>
           </div>
 
           <hr style="border:none;border-top:1px solid rgba(15,77,43,.12); margin:16px 0;">
 
-          <!-- SERVICES -->
+          <!-- SERVICES GRID -->
           <div class="grid-3">
 
             <!-- GRASS CUTTING -->
@@ -168,9 +169,204 @@
               </div>
             </div>
 
+            <!-- GUTTER CLEARING -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Gutter clearing</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Clear gutters + downpipes (as accessible). Depends on height, length &amp; debris.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcGutter" type="checkbox">
+                  Add gutter clearing
+                </label>
+
+                <div id="gutterOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Property type</label>
+                  <select id="gutterType" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="single" selected>Single storey</option>
+                    <option value="twostorey">Two storey</option>
+                  </select>
+
+                  <label style="display:block; font-weight:900; margin:12px 0 6px;">Amount of debris</label>
+                  <select id="gutterAmount" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="standard" selected>Standard</option>
+                    <option value="heavy">Heavy (blocked / lots of debris)</option>
+                  </select>
+
+                  <p style="margin:10px 0 0; color: var(--muted); font-size:14px;">
+                    Restricted access or heavily blocked gutters can affect the final quote.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- JET WASHING -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Jet washing</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Patios, paths &amp; driveways. Depends on area size and staining.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcJet" type="checkbox">
+                  Add jet washing
+                </label>
+
+                <div id="jetOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Area size</label>
+                  <select id="jetSize" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="small" selected>Small (path / small patio)</option>
+                    <option value="medium">Medium (average patio)</option>
+                    <option value="large">Large (driveway / large patio)</option>
+                  </select>
+
+                  <label style="display:block; font-weight:900; margin:12px 0 6px;">Condition</label>
+                  <select id="jetCondition" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="standard" selected>Standard dirt/algae</option>
+                    <option value="heavy">Heavy staining / deep moss</option>
+                  </select>
+
+                  <p style="margin:10px 0 0; color: var(--muted); font-size:14px;">
+                    Very heavy staining may require extra time — final quote confirmed after photos.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- BED WEEDING / WEED CONTROL -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Bed weeding / weed control</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Hand weeding &amp; clearing beds/edges. Depends on coverage and how established the weeds are.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcWeed" type="checkbox">
+                  Add weed control
+                </label>
+
+                <div id="weedOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Level</label>
+                  <select id="weedLevel" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="light" selected>Light (small patches)</option>
+                    <option value="standard">Standard (beds &amp; edges)</option>
+                    <option value="heavy">Heavy (widespread / established)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- LEAF CLEARANCE -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Leaf clearance</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Clearing leaves from lawns, paths and garden areas. Waste volume can vary.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcLeaf" type="checkbox">
+                  Add leaf clearance
+                </label>
+
+                <div id="leafOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Amount</label>
+                  <select id="leafAmount" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="light" selected>Light</option>
+                    <option value="standard">Standard</option>
+                    <option value="heavy">Heavy (lots of leaves)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- SMALL TREE / PRUNING -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Small tree / pruning</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Pruning and cut-backs (small trees/branches). Depends on height and access.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcPrune" type="checkbox">
+                  Add pruning
+                </label>
+
+                <div id="pruneOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Size</label>
+                  <select id="pruneSize" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="small" selected>Small (easy access)</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large / awkward access</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- FENCE REPAIRS -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Fence repairs</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Minor repairs (posts/panels as needed). No painting. Materials may be extra.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcFence" type="checkbox">
+                  Add fence repairs
+                </label>
+
+                <div id="fenceOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Repair type</label>
+                  <select id="fenceType" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="minor" selected>Minor fix (re-secure / small repair)</option>
+                    <option value="panel">Panel replacement (labour estimate)</option>
+                    <option value="post">Post repair/replacement (labour estimate)</option>
+                  </select>
+
+                  <p style="margin:10px 0 0; color: var(--muted); font-size:14px;">
+                    Materials are quoted separately (or supplied by customer) depending on preference.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- GENERAL PROPERTY TIDY / RUBBISH REMOVAL -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Property tidy / rubbish removal</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  General tidy-up and removal of non-green waste. Disposal fees may apply depending on type/volume.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcRubbish" type="checkbox">
+                  Add rubbish removal
+                </label>
+
+                <div id="rubbishOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Amount</label>
+                  <select id="rubbishAmount" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="small" selected>Small (a few bags/items)</option>
+                    <option value="medium">Medium (mixed items)</option>
+                    <option value="large">Large (multiple bulky items)</option>
+                  </select>
+
+                  <p style="margin:10px 0 0; color: var(--muted); font-size:14px;">
+                    Certain items may require specialist disposal — final quote confirmed after photos.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <!-- WASTE + NOTES -->
+          <!-- WASTE + CTA -->
           <div class="cta" style="margin-top:16px;">
             <div>
               <strong>Optional add-on</strong><br>
@@ -215,7 +411,8 @@
             </div>
 
             <p style="margin:12px 0 0; color: var(--muted); font-size:14px;">
-              <strong>Note:</strong> Prices may vary based on access, steep gardens, very long grass, heavy overgrowth, or large waste volume.
+              <strong>Note:</strong> Prices may vary based on access, steep gardens, very long grass, heavy overgrowth,
+              heavy staining, debris volume, or disposal requirements.
             </p>
           </div>
 
@@ -241,11 +438,6 @@
     // =========================
     // Estimate model (ranges)
     // =========================
-    // These are intentionally "professional business" ranges:
-    // - sustainable for van/equipment/PPE/time
-    // - fair value for customers
-    // - encourages bundling + regular maintenance
-
     const PRICES = {
       grass: {
         small:  { oneoff:[25, 32], monthly:[22, 30], fortnightly:[24, 31] },
@@ -258,64 +450,117 @@
         large:  [100, 160]
       },
       tidy: {
-        light:   [90, 140],
-        standard:[140, 220],
-        heavy:   [250, 420]
+        light:    [90, 140],
+        standard: [140, 220],
+        heavy:    [250, 420]
+      },
+      gutter: {
+        single:   { standard:[55, 85],  heavy:[85, 130] },
+        twostorey:{ standard:[85, 130], heavy:[130, 200] }
+      },
+      jet: {
+        small:  { standard:[60, 95],   heavy:[95, 140] },
+        medium: { standard:[95, 150],  heavy:[150, 220] },
+        large:  { standard:[150, 260], heavy:[260, 420] }
+      },
+      weed: {
+        light:    [35, 55],
+        standard: [55, 95],
+        heavy:    [95, 160]
+      },
+      leaf: {
+        light:    [30, 50],
+        standard: [50, 90],
+        heavy:    [90, 150]
+      },
+      prune: {
+        small:  [45, 80],
+        medium: [80, 140],
+        large:  [140, 220]
+      },
+      fence: {
+        minor: [60, 110],
+        panel: [90, 160],
+        post:  [120, 220]
+      },
+      rubbish: {
+        small:  [40, 75],
+        medium: [75, 140],
+        large:  [140, 260]
       },
       waste: {
-        // waste add-on is an estimate; actual depends on volume/disposal
         base: [10, 25],
         mediumBoost: [5, 15],
-        largeBoost: [15, 35]
+        largeBoost: [15, 45]
       }
     };
 
-    // Bundle discount: 2 services = 5%, 3 services = 10%
+    // Bundle discount: 2 services = 5%, 3 = 10%, 4+ = 12%
     function bundleDiscount(serviceCount){
-      if(serviceCount >= 3) return 0.10;
+      if(serviceCount >= 4) return 0.12;
+      if(serviceCount === 3) return 0.10;
       if(serviceCount === 2) return 0.05;
       return 0;
     }
 
-    // =========================
     // Elements
-    // =========================
-    const svcGrass = document.getElementById("svcGrass");
-    const svcHedge = document.getElementById("svcHedge");
-    const svcTidy  = document.getElementById("svcTidy");
+    const svcGrass  = document.getElementById("svcGrass");
+    const svcHedge  = document.getElementById("svcHedge");
+    const svcTidy   = document.getElementById("svcTidy");
+    const svcGutter = document.getElementById("svcGutter");
+    const svcJet    = document.getElementById("svcJet");
+    const svcWeed   = document.getElementById("svcWeed");
+    const svcLeaf   = document.getElementById("svcLeaf");
+    const svcPrune  = document.getElementById("svcPrune");
+    const svcFence  = document.getElementById("svcFence");
+    const svcRubbish= document.getElementById("svcRubbish");
 
-    const grassOptions = document.getElementById("grassOptions");
-    const hedgeOptions = document.getElementById("hedgeOptions");
-    const tidyOptions  = document.getElementById("tidyOptions");
+    const grassOptions  = document.getElementById("grassOptions");
+    const hedgeOptions  = document.getElementById("hedgeOptions");
+    const tidyOptions   = document.getElementById("tidyOptions");
+    const gutterOptions = document.getElementById("gutterOptions");
+    const jetOptions    = document.getElementById("jetOptions");
+    const weedOptions   = document.getElementById("weedOptions");
+    const leafOptions   = document.getElementById("leafOptions");
+    const pruneOptions  = document.getElementById("pruneOptions");
+    const fenceOptions  = document.getElementById("fenceOptions");
+    const rubbishOptions= document.getElementById("rubbishOptions");
 
     const grassSize = document.getElementById("grassSize");
     const grassFreq = document.getElementById("grassFreq");
     const hedgeSize = document.getElementById("hedgeSize");
     const tidyLevel = document.getElementById("tidyLevel");
+    const gutterType   = document.getElementById("gutterType");
+    const gutterAmount = document.getElementById("gutterAmount");
+    const jetSize      = document.getElementById("jetSize");
+    const jetCondition = document.getElementById("jetCondition");
+    const weedLevel    = document.getElementById("weedLevel");
+    const leafAmount   = document.getElementById("leafAmount");
+    const pruneSize    = document.getElementById("pruneSize");
+    const fenceType    = document.getElementById("fenceType");
+    const rubbishAmount= document.getElementById("rubbishAmount");
 
     const wasteRemoval = document.getElementById("wasteRemoval");
 
     const estimateRange = document.getElementById("estimateRange");
-    const discountLine = document.getElementById("discountLine");
-    const breakdown = document.getElementById("breakdown");
-    const btnWhatsApp = document.getElementById("btnWhatsApp");
+    const discountLine  = document.getElementById("discountLine");
+    const breakdown     = document.getElementById("breakdown");
+    const btnWhatsApp   = document.getElementById("btnWhatsApp");
 
-    // =========================
-    // UI Helpers
-    // =========================
-    function fmt(min, max){
-      return `£${min} – £${max}`;
-    }
-
-    function roundMoney(n){
-      // round to nearest whole pound for clean web display
-      return Math.round(n);
-    }
+    function fmt(min, max){ return `£${min} – £${max}`; }
+    function roundMoney(n){ return Math.round(n); }
 
     function updateOptionsVisibility(){
-      grassOptions.style.display = svcGrass.checked ? "block" : "none";
-      hedgeOptions.style.display = svcHedge.checked ? "block" : "none";
-      tidyOptions.style.display  = svcTidy.checked  ? "block" : "none";
+      grassOptions.style.display   = svcGrass.checked   ? "block" : "none";
+      hedgeOptions.style.display   = svcHedge.checked   ? "block" : "none";
+      tidyOptions.style.display    = svcTidy.checked    ? "block" : "none";
+      gutterOptions.style.display  = svcGutter.checked  ? "block" : "none";
+      jetOptions.style.display     = svcJet.checked     ? "block" : "none";
+      weedOptions.style.display    = svcWeed.checked    ? "block" : "none";
+      leafOptions.style.display    = svcLeaf.checked    ? "block" : "none";
+      pruneOptions.style.display   = svcPrune.checked   ? "block" : "none";
+      fenceOptions.style.display   = svcFence.checked   ? "block" : "none";
+      rubbishOptions.style.display = svcRubbish.checked ? "block" : "none";
     }
 
     function calculate(){
@@ -356,19 +601,95 @@
         lines.push(`Garden tidy-up (${lvlLabel}): ${fmt(range[0], range[1])}`);
       }
 
-      // Waste removal (estimate add-on)
+      // Gutter
+      if(svcGutter.checked){
+        selectedServices++;
+        const type = gutterType.value;
+        const amt  = gutterAmount.value;
+        const range = PRICES.gutter[type][amt];
+        min += range[0]; max += range[1];
+        const typeLabel = (type === "twostorey") ? "Two storey" : "Single storey";
+        const amtLabel  = (amt === "heavy") ? "Heavy (blocked)" : "Standard";
+        lines.push(`Gutter clearing (${typeLabel}, ${amtLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Jet
+      if(svcJet.checked){
+        selectedServices++;
+        const size = jetSize.value;
+        const cond = jetCondition.value;
+        const range = PRICES.jet[size][cond];
+        min += range[0]; max += range[1];
+        const sizeLabel = (size === "large") ? "Large" : (size === "medium" ? "Medium" : "Small");
+        const condLabel = (cond === "heavy") ? "Heavy staining" : "Standard";
+        lines.push(`Jet washing (${sizeLabel}, ${condLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Weed
+      if(svcWeed.checked){
+        selectedServices++;
+        const level = weedLevel.value;
+        const range = PRICES.weed[level];
+        min += range[0]; max += range[1];
+        const lvlLabel = (level === "heavy") ? "Heavy" : (level === "standard" ? "Standard" : "Light");
+        lines.push(`Weed control (${lvlLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Leaf
+      if(svcLeaf.checked){
+        selectedServices++;
+        const amt = leafAmount.value;
+        const range = PRICES.leaf[amt];
+        min += range[0]; max += range[1];
+        const amtLabel = (amt === "heavy") ? "Heavy" : (amt === "standard" ? "Standard" : "Light");
+        lines.push(`Leaf clearance (${amtLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Prune
+      if(svcPrune.checked){
+        selectedServices++;
+        const size = pruneSize.value;
+        const range = PRICES.prune[size];
+        min += range[0]; max += range[1];
+        const sizeLabel = (size === "large") ? "Large/awkward" : (size === "medium" ? "Medium" : "Small");
+        lines.push(`Pruning (${sizeLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Fence
+      if(svcFence.checked){
+        selectedServices++;
+        const type = fenceType.value;
+        const range = PRICES.fence[type];
+        min += range[0]; max += range[1];
+        const typeLabel = (type === "post") ? "Post repair/replacement" : (type === "panel" ? "Panel replacement (labour)" : "Minor repair");
+        lines.push(`Fence repairs (${typeLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Rubbish
+      if(svcRubbish.checked){
+        selectedServices++;
+        const amt = rubbishAmount.value;
+        const range = PRICES.rubbish[amt];
+        min += range[0]; max += range[1];
+        const amtLabel = (amt === "large") ? "Large" : (amt === "medium" ? "Medium" : "Small");
+        lines.push(`Rubbish removal (${amtLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Green waste removal add-on
       if(wasteRemoval.checked){
-        // scale waste estimate lightly based on "largest" selected job
         let boostMin = 0, boostMax = 0;
 
-        // Heuristic: tidy-ups & large gardens generally create more waste
         const hasTidy = svcTidy.checked;
         const hasLargeGrass = svcGrass.checked && grassSize.value === "large";
         const hasMedGrass = svcGrass.checked && grassSize.value === "medium";
         const hasLargeHedge = svcHedge.checked && hedgeSize.value === "large";
         const hasMedHedge = svcHedge.checked && hedgeSize.value === "medium";
+        const hasJetLarge = svcJet.checked && jetSize.value === "large";
+        const hasLeafHeavy = svcLeaf.checked && leafAmount.value === "heavy";
+        const hasWeedHeavy = svcWeed.checked && weedLevel.value === "heavy";
+        const hasPruneLarge = svcPrune.checked && pruneSize.value === "large";
 
-        if(hasTidy || hasLargeGrass || hasLargeHedge){
+        if(hasTidy || hasLargeGrass || hasLargeHedge || hasJetLarge || hasLeafHeavy || hasWeedHeavy || hasPruneLarge){
           boostMin = PRICES.waste.largeBoost[0];
           boostMax = PRICES.waste.largeBoost[1];
         } else if(hasMedGrass || hasMedHedge){
@@ -383,7 +704,6 @@
         lines.push(`Green waste removal (estimate): ${fmt(wMin, wMax)}`);
       }
 
-      // No services chosen
       if(selectedServices === 0){
         estimateRange.textContent = "Select a service to see an estimate.";
         discountLine.textContent = "No discount applied.";
@@ -392,16 +712,20 @@
         return;
       }
 
-      // Apply bundle discount (only to services, not meant as a hard promise)
       const disc = bundleDiscount(selectedServices);
       if(disc > 0){
         const beforeMin = min;
         const beforeMax = max;
         min = beforeMin * (1 - disc);
         max = beforeMax * (1 - disc);
-        discountLine.textContent = selectedServices === 2
-          ? "Bundle discount applied: 5% (2 services)"
-          : "Bundle discount applied: 10% (3+ services)";
+
+        if(selectedServices >= 4){
+          discountLine.textContent = "Bundle discount applied: 12% (4+ services)";
+        } else if(selectedServices === 3){
+          discountLine.textContent = "Bundle discount applied: 10% (3 services)";
+        } else {
+          discountLine.textContent = "Bundle discount applied: 5% (2 services)";
+        }
       } else {
         discountLine.textContent = "No discount applied (select 2+ services to save).";
       }
@@ -409,17 +733,15 @@
       const outMin = roundMoney(min);
       const outMax = roundMoney(max);
       estimateRange.textContent = fmt(outMin, outMax);
-
       breakdown.innerHTML = lines.map(l => `• ${l}`).join("<br>");
 
-      // Build WhatsApp message
       const msg =
 `Hi Evergreen, can I get a quote please?
 
 Selected services:
 ${lines.map(l => "- " + l).join("\n")}
 
-Estimated range shown: £${outMin}–£${outMax}
+Estimate shown: £${outMin}–£${outMax}
 
 Postcode:
 Access notes (gate/parking):
@@ -428,19 +750,14 @@ Photos: (attach here)`;
       btnWhatsApp.href = "https://wa.me/447825250141?text=" + encodeURIComponent(msg);
     }
 
-    // =========================
-    // Events
-    // =========================
     [
-      svcGrass, svcHedge, svcTidy,
-      grassSize, grassFreq, hedgeSize, tidyLevel,
+      svcGrass, svcHedge, svcTidy, svcGutter, svcJet, svcWeed, svcLeaf, svcPrune, svcFence, svcRubbish,
+      grassSize, grassFreq, hedgeSize, tidyLevel, gutterType, gutterAmount, jetSize, jetCondition,
+      weedLevel, leafAmount, pruneSize, fenceType, rubbishAmount,
       wasteRemoval
     ].forEach(el => el.addEventListener("change", calculate));
 
-    // initial
     calculate();
-
-    // footer year
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 
