@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pricing | Evergreen Property & Garden Care</title>
+  <title>Pricing Estimate | Evergreen Property & Garden Care</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- TOP BAR -->
   <div class="topbar">
     <div class="container">
       <div class="row">
@@ -20,14 +21,16 @@
     </div>
   </div>
 
+  <!-- HEADER / LOGO -->
   <header>
     <div class="container">
       <div class="brand">
-        <img src="logo.png" alt="Evergreen Property & Garden Care logo">
+        <img src="logo.png" alt="Evergreen Property &amp; Garden Care logo">
       </div>
     </div>
   </header>
 
+  <!-- NAV -->
   <nav>
     <div class="container">
       <div class="nav-inner">
@@ -46,201 +49,176 @@
     <div class="container">
 
       <section class="section">
-        <h2>Clear, fair pricing</h2>
+        <h2>Estimate builder</h2>
         <p class="sub">
-          Straightforward prices based on typical gardens in South Wales.
-          Regular customers get better value. One-off jobs welcome.
+          We don’t list fixed prices because every garden is different (size, condition, access, and waste).
+          Use this tool for a <strong>quick estimate range</strong> — then we’ll confirm a proper quote after photos.
         </p>
       </section>
 
-      <!-- GRASS CUTTING -->
-      <section class="section">
-        <h2>Grass cutting</h2>
-        <p class="sub">Prices depend on lawn size and frequency. Below are typical ranges.</p>
+      <!-- ESTIMATOR -->
+      <section class="card" style="padding:16px;">
+        <div style="padding-left:10px;">
+          <div class="kicker">Pick what you need • Get an instant estimate range • Bundle &amp; save</div>
 
-        <div class="grid-3">
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Small garden</h3>
-              <p>
-                <strong>£15 – £20</strong> per visit<br>
-                Typical terrace / small front &amp; back.
-              </p>
+          <div class="proof" style="margin-top:14px;">
+            <div class="mini">
+              <strong>Bundle discount</strong>
+              <span>Select 2+ services in the same visit and we apply a discount automatically (better value, more efficient visit).</span>
+            </div>
+            <div class="mini">
+              <strong>Waste removal</strong>
+              <span>Green waste removal can be added. Final price depends on volume and whether disposal is required.</span>
             </div>
           </div>
 
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Medium garden</h3>
-              <p>
-                <strong>£20 – £30</strong> per visit<br>
-                Semi-detached / average family garden.
-              </p>
+          <hr style="border:none;border-top:1px solid rgba(15,77,43,.12); margin:16px 0;">
+
+          <!-- SERVICES -->
+          <div class="grid-3">
+
+            <!-- GRASS CUTTING -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Grass cutting</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Professional cut + tidy finish. Regular visits available.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcGrass" type="checkbox">
+                  Add grass cutting
+                </label>
+
+                <div id="grassOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Garden size</label>
+                  <select id="grassSize" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+
+                  <label style="display:block; font-weight:900; margin:12px 0 6px;">Frequency</label>
+                  <select id="grassFreq" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="oneoff" selected>One-off visit</option>
+                    <option value="monthly">Monthly maintenance</option>
+                    <option value="fortnightly">Fortnightly maintenance</option>
+                  </select>
+
+                  <p style="margin:10px 0 0; color: var(--muted); font-size:14px;">
+                    Regular visits are better value and keep your garden consistently tidy.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- HEDGE TRIMMING -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Hedge trimming</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Neat shaping/reductions. Price depends on height, thickness &amp; access.
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcHedge" type="checkbox">
+                  Add hedge trimming
+                </label>
+
+                <div id="hedgeOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Hedge size</label>
+                  <select id="hedgeSize" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large / tall</option>
+                  </select>
+
+                  <p style="margin:10px 0 0; color: var(--muted); font-size:14px;">
+                    Tall hedges or restricted access may increase the estimate — we’ll confirm after photos.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TIDY UPS -->
+            <div class="tile">
+              <div class="tile-body">
+                <h3 style="margin-top:0;">Garden tidy-ups</h3>
+                <p style="margin:0 0 10px 0; color: var(--muted);">
+                  Overgrown areas brought back under control (clearance, cut back, general tidy).
+                </p>
+
+                <label style="display:flex; gap:10px; align-items:center; font-weight:900; color: var(--green);">
+                  <input id="svcTidy" type="checkbox">
+                  Add garden tidy-up
+                </label>
+
+                <div id="tidyOptions" style="margin-top:10px; display:none;">
+                  <label style="display:block; font-weight:900; margin-bottom:6px;">Tidy-up level</label>
+                  <select id="tidyLevel" style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(15,77,43,.18);">
+                    <option value="light">Light tidy-up</option>
+                    <option value="standard" selected>Standard tidy-up</option>
+                    <option value="heavy">Heavy clearance</option>
+                  </select>
+
+                  <p style="margin:10px 0 0; color: var(--muted); font-size:14px;">
+                    Tidy-ups vary a lot. Photos help us confirm a fair quote quickly.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- WASTE + NOTES -->
+          <div class="cta" style="margin-top:16px;">
+            <div>
+              <strong>Optional add-on</strong><br>
+              <span>
+                <label style="display:flex; align-items:center; gap:10px; margin-top:8px; font-weight:900; color: var(--green);">
+                  <input id="wasteRemoval" type="checkbox">
+                  Add green waste removal (estimated)
+                </label>
+                <span style="display:block; margin-top:6px; font-size:14px;">
+                  Disposal/volume can affect final pricing — we’ll confirm after photos.
+                </span>
+              </span>
+            </div>
+
+            <div class="actions" style="margin:0;">
+              <a class="btn" href="booking.html">Booking form</a>
+              <a class="btn primary" id="btnWhatsApp" href="https://wa.me/447825250141" target="_blank" rel="noopener">WhatsApp for a quote</a>
             </div>
           </div>
 
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Large garden</h3>
-              <p>
-                <strong>£30+</strong> per visit<br>
-                Large lawns, corner plots, long grass.
-              </p>
+          <!-- RESULT -->
+          <div class="card" style="margin-top:16px; padding:16px;">
+            <h2 style="margin:0 0 8px 0;">Your estimate</h2>
+            <p class="sub" style="margin:0 0 12px 0;">
+              This is a guide range. Final quote confirmed after photos + postcode + access check.
+            </p>
+
+            <div class="proof" style="margin-bottom:14px;">
+              <div class="mini">
+                <strong>Estimated range</strong>
+                <span id="estimateRange">Select a service to see an estimate.</span>
+              </div>
+              <div class="mini">
+                <strong>Bundle discount</strong>
+                <span id="discountLine">No discount applied.</span>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="cta" style="margin-top:14px;">
-          <div>
-            <strong>Monthly &amp; regular discounts available</strong><br>
-            <span>Most customers save by booking ongoing maintenance.</span>
-          </div>
-          <div class="actions" style="margin:0;">
-            <a class="btn primary" href="booking.html">Book regular visits</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- REGULAR MAINTENANCE -->
-      <section class="section">
-        <h2>Regular maintenance packages</h2>
-        <p class="sub">Best value option. Keeps your garden tidy year-round.</p>
-
-        <div class="grid-3">
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Monthly cut</h3>
-              <p>
-                From <strong>£15 per visit</strong><br>
-                Ideal for low-maintenance gardens.
-              </p>
+            <div class="mini" style="box-shadow:none; border:1px solid rgba(15,77,43,.14);">
+              <strong>Breakdown</strong>
+              <span id="breakdown">—</span>
             </div>
+
+            <p style="margin:12px 0 0; color: var(--muted); font-size:14px;">
+              <strong>Note:</strong> Prices may vary based on access, steep gardens, very long grass, heavy overgrowth, or large waste volume.
+            </p>
           </div>
 
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Fortnightly cut</h3>
-              <p>
-                From <strong>£18 per visit</strong><br>
-                Keeps lawns looking consistently tidy.
-              </p>
-            </div>
-          </div>
-
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Full garden upkeep</h3>
-              <p>
-                <strong>Custom price</strong><br>
-                Grass, edges, light weeding, general tidy-ups.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- HEDGES -->
-      <section class="section">
-        <h2>Hedge trimming</h2>
-        <p class="sub">Priced by size, height and access.</p>
-
-        <div class="grid-3">
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Small hedge</h3>
-              <p>
-                <strong>£30 – £40</strong><br>
-                Front or short boundary hedge.
-              </p>
-            </div>
-          </div>
-
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Medium hedge</h3>
-              <p>
-                <strong>£40 – £60</strong><br>
-                Side / rear garden hedges.
-              </p>
-            </div>
-          </div>
-
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Large or tall hedge</h3>
-              <p>
-                <strong>£60+</strong><br>
-                Height, thickness and access dependent.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TIDY UPS -->
-      <section class="section">
-        <h2>Garden tidy-ups</h2>
-        <p class="sub">Ideal for overgrown or neglected gardens.</p>
-
-        <div class="grid-3">
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Light tidy-up</h3>
-              <p>
-                <strong>From £60</strong><br>
-                Grass cut, edges, light clearance.
-              </p>
-            </div>
-          </div>
-
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Standard tidy-up</h3>
-              <p>
-                <strong>£80 – £120</strong><br>
-                Overgrowth, hedges, weeds.
-              </p>
-            </div>
-          </div>
-
-          <div class="tile">
-            <div class="tile-body">
-              <h3>Heavy clearance</h3>
-              <p>
-                <strong>£150+</strong><br>
-                Very overgrown gardens or long-neglected areas.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- NOTES -->
-      <section class="section">
-        <h2>Important notes</h2>
-
-        <div class="proof">
-          <div class="mini">
-            <strong>Green waste</strong>
-            <span>Removal available by agreement. Some jobs may require additional disposal costs.</span>
-          </div>
-          <div class="mini">
-            <strong>Access &amp; condition</strong>
-            <span>Prices assume reasonable access and standard conditions.</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="cta">
-          <div>
-            <strong>Want an exact price?</strong><br>
-            <span>Send a photo, postcode and what you need doing.</span>
-          </div>
-          <div class="actions" style="margin:0;">
-            <a class="btn primary" href="https://wa.me/447825250141" target="_blank" rel="noopener">Get a WhatsApp quote</a>
-            <a class="btn" href="booking.html">Booking form</a>
-          </div>
         </div>
       </section>
 
@@ -260,6 +238,209 @@
   </footer>
 
   <script>
+    // =========================
+    // Estimate model (ranges)
+    // =========================
+    // These are intentionally "professional business" ranges:
+    // - sustainable for van/equipment/PPE/time
+    // - fair value for customers
+    // - encourages bundling + regular maintenance
+
+    const PRICES = {
+      grass: {
+        small:  { oneoff:[25, 32], monthly:[22, 30], fortnightly:[24, 31] },
+        medium: { oneoff:[30, 40], monthly:[26, 36], fortnightly:[28, 38] },
+        large:  { oneoff:[40, 55], monthly:[35, 50], fortnightly:[38, 52] }
+      },
+      hedge: {
+        small:  [45, 65],
+        medium: [65, 95],
+        large:  [100, 160]
+      },
+      tidy: {
+        light:   [90, 140],
+        standard:[140, 220],
+        heavy:   [250, 420]
+      },
+      waste: {
+        // waste add-on is an estimate; actual depends on volume/disposal
+        base: [10, 25],
+        mediumBoost: [5, 15],
+        largeBoost: [15, 35]
+      }
+    };
+
+    // Bundle discount: 2 services = 5%, 3 services = 10%
+    function bundleDiscount(serviceCount){
+      if(serviceCount >= 3) return 0.10;
+      if(serviceCount === 2) return 0.05;
+      return 0;
+    }
+
+    // =========================
+    // Elements
+    // =========================
+    const svcGrass = document.getElementById("svcGrass");
+    const svcHedge = document.getElementById("svcHedge");
+    const svcTidy  = document.getElementById("svcTidy");
+
+    const grassOptions = document.getElementById("grassOptions");
+    const hedgeOptions = document.getElementById("hedgeOptions");
+    const tidyOptions  = document.getElementById("tidyOptions");
+
+    const grassSize = document.getElementById("grassSize");
+    const grassFreq = document.getElementById("grassFreq");
+    const hedgeSize = document.getElementById("hedgeSize");
+    const tidyLevel = document.getElementById("tidyLevel");
+
+    const wasteRemoval = document.getElementById("wasteRemoval");
+
+    const estimateRange = document.getElementById("estimateRange");
+    const discountLine = document.getElementById("discountLine");
+    const breakdown = document.getElementById("breakdown");
+    const btnWhatsApp = document.getElementById("btnWhatsApp");
+
+    // =========================
+    // UI Helpers
+    // =========================
+    function fmt(min, max){
+      return `£${min} – £${max}`;
+    }
+
+    function roundMoney(n){
+      // round to nearest whole pound for clean web display
+      return Math.round(n);
+    }
+
+    function updateOptionsVisibility(){
+      grassOptions.style.display = svcGrass.checked ? "block" : "none";
+      hedgeOptions.style.display = svcHedge.checked ? "block" : "none";
+      tidyOptions.style.display  = svcTidy.checked  ? "block" : "none";
+    }
+
+    function calculate(){
+      updateOptionsVisibility();
+
+      let min = 0, max = 0;
+      let lines = [];
+      let selectedServices = 0;
+
+      // Grass
+      if(svcGrass.checked){
+        selectedServices++;
+        const size = grassSize.value;
+        const freq = grassFreq.value;
+        const range = PRICES.grass[size][freq];
+        min += range[0]; max += range[1];
+        const freqLabel = (freq === "oneoff") ? "One-off" : (freq === "monthly" ? "Monthly" : "Fortnightly");
+        lines.push(`Grass cutting (${freqLabel}, ${size}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Hedge
+      if(svcHedge.checked){
+        selectedServices++;
+        const size = hedgeSize.value;
+        const range = PRICES.hedge[size];
+        min += range[0]; max += range[1];
+        const sizeLabel = (size === "large") ? "Large/tall" : (size === "medium" ? "Medium" : "Small");
+        lines.push(`Hedge trimming (${sizeLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Tidy
+      if(svcTidy.checked){
+        selectedServices++;
+        const level = tidyLevel.value;
+        const range = PRICES.tidy[level];
+        min += range[0]; max += range[1];
+        const lvlLabel = (level === "heavy") ? "Heavy clearance" : (level === "standard" ? "Standard tidy-up" : "Light tidy-up");
+        lines.push(`Garden tidy-up (${lvlLabel}): ${fmt(range[0], range[1])}`);
+      }
+
+      // Waste removal (estimate add-on)
+      if(wasteRemoval.checked){
+        // scale waste estimate lightly based on "largest" selected job
+        let boostMin = 0, boostMax = 0;
+
+        // Heuristic: tidy-ups & large gardens generally create more waste
+        const hasTidy = svcTidy.checked;
+        const hasLargeGrass = svcGrass.checked && grassSize.value === "large";
+        const hasMedGrass = svcGrass.checked && grassSize.value === "medium";
+        const hasLargeHedge = svcHedge.checked && hedgeSize.value === "large";
+        const hasMedHedge = svcHedge.checked && hedgeSize.value === "medium";
+
+        if(hasTidy || hasLargeGrass || hasLargeHedge){
+          boostMin = PRICES.waste.largeBoost[0];
+          boostMax = PRICES.waste.largeBoost[1];
+        } else if(hasMedGrass || hasMedHedge){
+          boostMin = PRICES.waste.mediumBoost[0];
+          boostMax = PRICES.waste.mediumBoost[1];
+        }
+
+        const base = PRICES.waste.base;
+        const wMin = base[0] + boostMin;
+        const wMax = base[1] + boostMax;
+        min += wMin; max += wMax;
+        lines.push(`Green waste removal (estimate): ${fmt(wMin, wMax)}`);
+      }
+
+      // No services chosen
+      if(selectedServices === 0){
+        estimateRange.textContent = "Select a service to see an estimate.";
+        discountLine.textContent = "No discount applied.";
+        breakdown.textContent = "—";
+        btnWhatsApp.href = "https://wa.me/447825250141";
+        return;
+      }
+
+      // Apply bundle discount (only to services, not meant as a hard promise)
+      const disc = bundleDiscount(selectedServices);
+      if(disc > 0){
+        const beforeMin = min;
+        const beforeMax = max;
+        min = beforeMin * (1 - disc);
+        max = beforeMax * (1 - disc);
+        discountLine.textContent = selectedServices === 2
+          ? "Bundle discount applied: 5% (2 services)"
+          : "Bundle discount applied: 10% (3+ services)";
+      } else {
+        discountLine.textContent = "No discount applied (select 2+ services to save).";
+      }
+
+      const outMin = roundMoney(min);
+      const outMax = roundMoney(max);
+      estimateRange.textContent = fmt(outMin, outMax);
+
+      breakdown.innerHTML = lines.map(l => `• ${l}`).join("<br>");
+
+      // Build WhatsApp message
+      const msg =
+`Hi Evergreen, can I get a quote please?
+
+Selected services:
+${lines.map(l => "- " + l).join("\n")}
+
+Estimated range shown: £${outMin}–£${outMax}
+
+Postcode:
+Access notes (gate/parking):
+Photos: (attach here)`;
+
+      btnWhatsApp.href = "https://wa.me/447825250141?text=" + encodeURIComponent(msg);
+    }
+
+    // =========================
+    // Events
+    // =========================
+    [
+      svcGrass, svcHedge, svcTidy,
+      grassSize, grassFreq, hedgeSize, tidyLevel,
+      wasteRemoval
+    ].forEach(el => el.addEventListener("change", calculate));
+
+    // initial
+    calculate();
+
+    // footer year
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 
